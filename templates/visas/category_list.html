@@ -1,0 +1,184 @@
+<!-- templates/visas/list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Visa Categories - {{ site_name }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+           <h1 class="display-4 mb-3">Study Destinations</h1>
+             <p class="lead">Explore top study destinations and visa requirements for international students</p>
+        </div>
+    </div>
+    
+    <!-- Category Filter -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="d-flex flex-wrap">
+                                <button class="btn btn-outline-primary m-1 active" data-filter="all">All Visas</button>
+                                {% for type_code, type_name in category_types %}
+                                <button class="btn btn-outline-primary m-1" data-filter="{{ type_code }}">
+                                    {{ type_name }}
+                                </button>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="searchInput" placeholder="Search visas...">
+                                <button class="btn btn-primary" id="searchButton">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Categories Grid -->
+    <div class="row" id="visaCategories">
+        {% for category in categories %}
+        <div class="col-md-4 mb-4" data-category="{{ category.category_type }}">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-header bg-white border-0 pt-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge bg-primary">{{ category.get_category_type_display }}</span>
+                        <span class="h5 text-primary mb-0">${{ category.fee }}</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">{{ category.name }}</h4>
+                    <p class="card-text text-muted">{{ category.description|truncatewords:30 }}</p>
+                    
+                    <div class="mb-3">
+                        <h6>Requirements:</h6>
+                        <p class="small">{{ category.requirements|truncatewords:20 }}</p>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <small class="text-muted">
+                                <i class="fas fa-clock me-1"></i> {{ category.processing_time }}
+                            </small>
+                        </div>
+                        <div class="col-6">
+                            <small class="text-muted">
+                                <i class="fas fa-calendar-alt me-1"></i> {{ category.validity_period }}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-white border-0 pb-4">
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'study_destinations:category_detail' category.slug %}" class="btn btn-primary">
+                            <i class="fas fa-info-circle me-2"></i> View Details
+                        </a>
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'dashboard:application_create' %}?category={{ category.id }}" class="btn btn-outline-primary">
+                            <i class="fas fa-arrow-right me-2"></i> Apply Now
+                        </a>
+                        {% else %}
+                        <a href="{% url 'accounts:register' %}" class="btn btn-outline-primary">
+                            <i class="fas fa-user-plus me-2"></i> Register to Apply
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="text-center py-5">
+                <i class="fas fa-passport fa-3x text-muted mb-3"></i>
+                <h3>No Visa Categories Available</h3>
+                <p class="text-muted">Check back soon for our visa services</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Stats Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-body text-center">
+                    <h3 class="mb-4">Why Choose Our Visa Services?</h3>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <i class="fas fa-check-circle fa-2x text-success mb-2"></i>
+                            <h5>98% Success Rate</h5>
+                            <p class="text-muted">Highest approval rate in industry</p>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <i class="fas fa-headset fa-2x text-primary mb-2"></i>
+                            <h5>24/7 Support</h5>
+                            <p class="text-muted">Round-the-clock assistance</p>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <i class="fas fa-shield-alt fa-2x text-warning mb-2"></i>
+                            <h5>Secure Processing</h5>
+                            <p class="text-muted">Your data is protected</p>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <i class="fas fa-clock fa-2x text-info mb-2"></i>
+                            <h5>Fast Processing</h5>
+                            <p class="text-muted">Expedited services available</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Filter functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    const visaCards = document.querySelectorAll('#visaCategories .col-md-4');
+    const searchInput = document.getElementById('searchInput');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            const filter = this.getAttribute('data-filter');
+            
+            // Filter cards
+            visaCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+    
+    // Search functionality
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        
+        visaCards.forEach(card => {
+            const title = card.querySelector('.card-title').textContent.toLowerCase();
+            const description = card.querySelector('.card-text').textContent.toLowerCase();
+            
+            if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

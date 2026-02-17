@@ -1,0 +1,209 @@
+<!-- templates/visas/category_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}{{ category.name }} - {{ site_name }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'core:home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'study_destinations:list' %}">Study Destinations</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ category.name }}</li>
+        </ol>
+    </nav>
+    
+    <div class="row">
+        <!-- Main Content -->
+        <div class="col-lg-8">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                        <div>
+                            <h1 class="display-6">{{ category.name }}</h1>
+                            <span class="badge bg-primary fs-6">{{ category.get_category_type_display }}</span>
+                        </div>
+                        <div class="text-end">
+                            <h2 class="text-primary">${{ category.fee }}</h2>
+                            <small class="text-muted">Service Fee</small>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <p><strong><i class="fas fa-clock text-primary me-2"></i>Processing Time:</strong><br>
+                            {{ category.processing_time }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong><i class="fas fa-calendar-alt text-primary me-2"></i>Validity:</strong><br>
+                            {{ category.validity_period }}</p>
+                        </div>
+                    </div>
+                    
+                    <h4 class="mb-3">Description</h4>
+                    <p class="lead">{{ category.description }}</p>
+                    
+                    <hr class="my-4">
+                    
+                    <h4 class="mb-3">Requirements</h4>
+                    <div class="requirements">
+                        {{ category.requirements|linebreaks }}
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <h4 class="mb-3">Application Process</h4>
+                    <div class="row">
+                        <div class="col-md-3 text-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width: 60px; height: 60px;">
+                                <i class="fas fa-file-alt fa-lg"></i>
+                            </div>
+                            <h6>1. Submit Application</h6>
+                            <small class="text-muted">Complete online form</small>
+                        </div>
+                        <div class="col-md-3 text-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width: 60px; height: 60px;">
+                                <i class="fas fa-upload fa-lg"></i>
+                            </div>
+                            <h6>2. Upload Documents</h6>
+                            <small class="text-muted">Submit required documents</small>
+                        </div>
+                        <div class="col-md-3 text-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width: 60px; height: 60px;">
+                                <i class="fas fa-search fa-lg"></i>
+                            </div>
+                            <h6>3. Expert Review</h6>
+                            <small class="text-muted">Our team verifies everything</small>
+                        </div>
+                        <div class="col-md-3 text-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width: 60px; height: 60px;">
+                                <i class="fas fa-plane fa-lg"></i>
+                            </div>
+                            <h6>4. Get Visa</h6>
+                            <small class="text-muted">Receive your visa</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="mb-4">Frequently Asked Questions</h4>
+                    <div class="accordion" id="categoryFAQ">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    Can I apply for this visa online?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#categoryFAQ">
+                                <div class="accordion-body">
+                                    Yes, you can start your application online through our portal. We guide you through every step of the process.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    What is included in your service fee?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#categoryFAQ">
+                                <div class="accordion-body">
+                                    Our service fee includes: Document verification, application preparation, submission guidance, follow-up with authorities, and consultation support. Government fees are separate.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    How long does it take to get an appointment?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#categoryFAQ">
+                                <div class="accordion-body">
+                                    Appointment availability depends on the embassy/consulate. We help you secure the earliest possible appointment slot.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <!-- Apply Now Card -->
+            <div class="card shadow sticky-top" style="top: 20px;">
+                <div class="card-body text-center">
+                    <h4 class="card-title mb-4">Ready to Apply?</h4>
+                    <p class="card-text mb-4">Start your visa application process with our expert guidance.</p>
+                    
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'dashboard:application_create' %}?category={{ category.id }}" class="btn btn-primary btn-lg w-100 mb-3">
+                        <i class="fas fa-arrow-right me-2"></i> Apply Now
+                    </a>
+                    {% else %}
+                    <a href="{% url 'accounts:register' %}" class="btn btn-primary btn-lg w-100 mb-3">
+                        <i class="fas fa-user-plus me-2"></i> Register & Apply
+                    </a>
+                    <p class="small text-muted mb-3">Already have an account?</p>
+                    <a href="{% url 'accounts:login' %}" class="btn btn-outline-primary w-100">
+                        <i class="fas fa-sign-in-alt me-2"></i> Login
+                    </a>
+                    {% endif %}
+                    
+                    <hr class="my-4">
+                    
+                    <div class="text-start">
+                        <h6><i class="fas fa-check-circle text-success me-2"></i>What's Included:</h6>
+                        <ul class="small">
+                            <li>Document checklist</li>
+                            <li>Application preparation</li>
+                            <li>Submission guidance</li>
+                            <li>Status tracking</li>
+                            <li>Consultant support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Card -->
+            <div class="card shadow mt-4">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Need Help?</h5>
+                    <p class="card-text">Our visa experts are here to assist you.</p>
+                    <a href="{% url 'core:contact' %}" class="btn btn-outline-primary w-100 mb-2">
+                        <i class="fas fa-comments me-2"></i> Contact Us
+                    </a>
+                    <a href="tel:{{ contact_phone }}" class="btn btn-outline-success w-100">
+                        <i class="fas fa-phone me-2"></i> Call Now
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Related Visas -->
+            <div class="card shadow mt-4">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Related Visas</h5>
+                    {% for related in categories %}
+                        {% if related.category_type == category.category_type and related.id != category.id %}
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <h6 class="mb-0">{{ related.name }}</h6>
+                                <small class="text-muted">{{ related.processing_time }}</small>
+                            </div>
+                            <a href="{% url 'study_destinations:category_detail' related.slug %}" class="btn btn-sm btn-outline-primary">
+                                View
+                            </a>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

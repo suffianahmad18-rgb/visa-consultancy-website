@@ -1,0 +1,80 @@
+<!-- templates/applications/application_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}My Applications - {{ site_name }}{% endblock %}
+
+{% block content %}
+<!-- Add at top of page -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>My Applications</h1>
+    <a href="{% url 'messaging:compose' %}" class="btn btn-primary">
+        <i class="fas fa-envelope me-2"></i> New Message
+    </a>
+</div>
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1><i class="fas fa-file-alt"></i> My Applications</h1>
+        <a href="{% url 'dashboard:application_create' %}" class="btn btn-primary">
+            <i class="fas fa-plus"></i> New Application
+        </a>
+    </div>
+    
+    {% if applications %}
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>Application ID</th>
+                    <th>Visa Category</th>
+                    <th>Destination</th>
+                    <th>Status</th>
+                    <th>Submitted Date</th>
+                    <th>Payment</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for app in applications %}
+                <tr>
+                    <td><strong>{{ app.application_id }}</strong></td>
+                    <td>{{ app.visa_category.name }}</td>
+                    <td>{{ app.destination_country }}</td>
+                    <td>
+                        <span class="badge bg-{% if app.status == 'APPROVED' %}success
+                            {% elif app.status == 'REJECTED' %}danger
+                            {% elif app.status == 'SUBMITTED' %}primary
+                            {% elif app.status == 'PROCESSING' %}info
+                            {% else %}warning{% endif %}">
+                            {{ app.get_status_display }}
+                        </span>
+                    </td>
+                    <td>{{ app.submitted_date|date:"M d, Y" }}</td>
+                    <td>
+                        <span class="badge bg-{% if app.payment_status == 'Paid' %}success
+                            {% elif app.payment_status == 'Partial' %}warning
+                            {% else %}secondary{% endif %}">
+                            {{ app.payment_status }}
+                        </span>
+                    </td>
+                    <td>
+                        <a href="{% url 'dashboard:application_detail' app.pk %}" class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-eye"></i> View
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="text-center py-5">
+        <i class="fas fa-file-alt fa-4x text-muted mb-3"></i>
+        <h3>No Applications Yet</h3>
+        <p class="text-muted">Start your visa application journey now.</p>
+        <a href="{% url 'dashboard:application_create' %}" class="btn btn-primary btn-lg">
+            <i class="fas fa-plus"></i> Create First Application
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,1266 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$AG9EcjLG5eJyGHQPAywR4N$C8npiwPEr7XFoMNM3sg/acuVLsOZ57GLJeSLdTPTscs=",
+      "last_login": "2026-02-16T13:22:49.990Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "admin@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-02-11T21:03:39.381Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$qehwggQI0bE3mHKaSMB77L$HLWGfARinme7S091WumphdytWzMC6iSBgJkrvM6bKzM=",
+      "last_login": "2026-02-16T13:23:15.083Z",
+      "is_superuser": false,
+      "username": "suffian",
+      "first_name": "SUFFIAN",
+      "last_name": "AHMAD",
+      "email": "suffianahmad18@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-02-15T09:26:23.442Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$WwL9WpPUHFLEe0WDRry5DU$eFjwCvIiDueNWp6nkr2kLs81wuQkGfITgj8ofSaCKuA=",
+      "last_login": "2026-02-16T12:53:50.914Z",
+      "is_superuser": false,
+      "username": "staff",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-02-16T12:51:54.463Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.clientprofile",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "phone": "",
+      "address": "",
+      "passport_number": "",
+      "date_of_birth": null,
+      "country": "",
+      "profile_image": "",
+      "created_at": "2026-02-11T21:03:40.719Z",
+      "updated_at": "2026-02-11T21:04:56.664Z"
+    }
+  },
+  {
+    "model": "accounts.clientprofile",
+    "pk": 7,
+    "fields": {
+      "user": 7,
+      "phone": "03270733550",
+      "address": "cb 181 kashmir colony",
+      "passport_number": "",
+      "date_of_birth": null,
+      "country": "pakistan",
+      "profile_image": "",
+      "created_at": "2026-02-15T09:26:25.480Z",
+      "updated_at": "2026-02-15T09:26:25.480Z"
+    }
+  },
+  {
+    "model": "accounts.staffprofile",
+    "pk": 1,
+    "fields": {
+      "user": 8,
+      "phone": "03270733550",
+      "department": "message",
+      "designation": "staff",
+      "is_agent": true,
+      "profile_image": "",
+      "created_at": "2026-02-16T12:52:23.097Z",
+      "updated_at": "2026-02-16T12:52:23.097Z"
+    }
+  },
+  {
+    "model": "study_destinations.studydestination",
+    "pk": 9,
+    "fields": {
+      "country_name": "Australia",
+      "country_code": "OTHER",
+      "slug": "australia",
+      "banner_image": "study_destinations/banners/study_in_australia_cd74a023ef_lzdoztq.png",
+      "intro_title": "Australia",
+      "intro_description": "<p>Studying in Australia is a popular choice for international students because of its high-quality education system, globally recognized universities, and welcoming multicultural environment. Australia offers a wide range of programs, modern research facilities, and strong post-study work opportunities, making it an attractive destination for students who want both academic excellence and career growth.</p>",
+      "quick_fact_1": "Australia is home to top-ranked institutions such as the University of Melbourne",
+      "quick_fact_2": "International graduates can apply for post-study work visas, allowing them to gain work experience",
+      "quick_fact_3": "Students can choose from thousands of courses in fields like IT, business, engineering and more",
+      "quick_fact_4": "Australia is known for its friendly communities and diverse culture, helping international students",
+      "meta_title": "",
+      "meta_description": "",
+      "is_published": true,
+      "is_featured": true,
+      "order": 0,
+      "created_at": "2026-02-16T08:30:29.020Z",
+      "updated_at": "2026-02-16T10:48:36.796Z"
+    }
+  },
+  {
+    "model": "study_destinations.studydestination",
+    "pk": 12,
+    "fields": {
+      "country_name": "CYPRUS",
+      "country_code": "OTHER",
+      "slug": "cyprus",
+      "banner_image": "study_destinations/banners/datingscout-Fs3tnxNGutk-unsplash.jpg",
+      "intro_title": "CYPRUS",
+      "intro_description": "<p>Cyprus has become a popular destination for international students due to its high-quality education, affordable tuition fees, and welcoming multicultural environment. Located at the crossroads of Europe, Asia, and Africa, Cyprus offers globally recognized degrees, English-taught programs, and excellent career opportunities for graduates. With modern universities, safe cities, and a pleasant Mediterranean climate, Cyprus provides students with both academic excellence and an enjoyable lifestyle.</p>",
+      "quick_fact_1": "Universities in Cyprus follow European education standards (Bologna Process).",
+      "quick_fact_2": "Study costs are lower compared to many European countries.",
+      "quick_fact_3": "Most universities offer programs in English for international students.",
+      "quick_fact_4": "Cyprus has a relatively simple and fast visa procedure for students.",
+      "meta_title": "",
+      "meta_description": "",
+      "is_published": true,
+      "is_featured": false,
+      "order": 0,
+      "created_at": "2026-02-16T10:20:04.410Z",
+      "updated_at": "2026-02-16T10:20:04.410Z"
+    }
+  },
+  {
+    "model": "study_destinations.studydestination",
+    "pk": 8,
+    "fields": {
+      "country_name": "Finland",
+      "country_code": "OTHER",
+      "slug": "finland",
+      "banner_image": "study_destinations/banners/alexandr-bormotin-w6KSwwnQyaE-unsplash.jpg",
+      "intro_title": "🇫🇮 Study in Finland — Introduction",
+      "intro_description": "<p>Finland is one of the top destinations for international students due to its world-class education system, innovative teaching methods, and high quality of life. Known for its safe environment and modern learning approach, Finland focuses on practical skills, research, and student well-being. Many universities offer English-taught programs, making it an attractive option for students worldwide who want a globally recognized degree and excellent career opportunities.</p>",
+      "quick_fact_1": "Finland’s universities consistently rank among the best in Europe for research and teaching quality.",
+      "quick_fact_2": "Hundreds of bachelor’s and master’s programs are available in English for international students.",
+      "quick_fact_3": "International students can work part-time (usually up to 30 hours/week) during studies.",
+      "quick_fact_4": "Finland is one of the safest countries in the world with excellent student support services.",
+      "meta_title": "",
+      "meta_description": "",
+      "is_published": true,
+      "is_featured": true,
+      "order": 0,
+      "created_at": "2026-02-16T08:10:37.311Z",
+      "updated_at": "2026-02-16T10:48:36.800Z"
+    }
+  },
+  {
+    "model": "study_destinations.studydestination",
+    "pk": 15,
+    "fields": {
+      "country_name": "France",
+      "country_code": "OTHER",
+      "slug": "france",
+      "banner_image": "study_destinations/banners/study_in_france_3a81ed0c71_ikSsJFM.png",
+      "intro_title": "France",
+      "intro_description": "<p>France is one of the world&rsquo;s most popular study destinations, known for its high-quality education, rich culture, and affordable tuition fees. Home to globally ranked universities and prestigious business schools, France offers international students a wide range of programs taught in both French and English. With its vibrant student life, historic cities, and strong career opportunities in Europe, studying in France provides both academic excellence and valuable international exposure.</p>",
+      "quick_fact_1": "Public universities in France offer low tuition fees compared to many other European countries.",
+      "quick_fact_2": "French institutions like Sorbonne University are respected worldwide.",
+      "quick_fact_3": "Over 1,500 programs are available in English, especially at the master’s level.",
+      "quick_fact_4": "International students can work up to 964 hours per year (about 20 hours per week).",
+      "meta_title": "",
+      "meta_description": "",
+      "is_published": true,
+      "is_featured": false,
+      "order": 0,
+      "created_at": "2026-02-16T10:44:33.030Z",
+      "updated_at": "2026-02-16T10:44:33.030Z"
+    }
+  },
+  {
+    "model": "study_destinations.studydestination",
+    "pk": 10,
+    "fields": {
+      "country_name": "Germany",
+      "country_code": "OTHER",
+      "slug": "germany",
+      "banner_image": "study_destinations/banners/study_in_germany_3735c847cb_ECqg86t.png",
+      "intro_title": "Germany",
+      "intro_description": "<p>Germany is one of the most popular destinations for international students due to its world-class education system, affordable tuition fees, and strong career opportunities. Known for its high academic standards and innovative research environment, Germany offers a wide range of English-taught programs across various fields. Students also benefit from a safe environment, rich culture, and the chance to work while studying, making Germany an excellent choice for higher education.</p>",
+      "quick_fact_1": "Many public universities in Germany charge little to no tuition fees, even for international student",
+      "quick_fact_2": "German university degrees are highly respected worldwide.",
+      "quick_fact_3": "International students can work up to 120 full days or 240 half days per year.",
+      "quick_fact_4": "Graduates can stay in Germany for up to 18 months to search for a job after completing their degree.",
+      "meta_title": "",
+      "meta_description": "",
+      "is_published": true,
+      "is_featured": true,
+      "order": 0,
+      "created_at": "2026-02-16T08:50:03.422Z",
+      "updated_at": "2026-02-16T10:48:36.801Z"
+    }
+  },
+  {
+    "model": "study_destinations.studydestination",
+    "pk": 11,
+    "fields": {
+      "country_name": "Ireland",
+      "country_code": "OTHER",
+      "slug": "ireland",
+      "banner_image": "study_destinations/banners/ainars-djatlevskis-gJQLVTyQfgQ-unsplash.jpg",
+      "intro_title": "Ireland",
+      "intro_description": "<p>Ireland has become one of the most popular study destinations for international students due to its high-quality education system, globally recognized universities, and strong career opportunities. Known for its friendly culture and safe environment, Ireland offers a perfect blend of academic excellence and vibrant student life. Many multinational companies have their European headquarters in Ireland, making it an attractive choice for students who want both quality education and future job prospects.</p>",
+      "quick_fact_1": "Irish universities rank among the top institutions worldwide and follow a high academic standard.",
+      "quick_fact_2": "International graduates can stay and work in Ireland for up to 2 years after completing degrees",
+      "quick_fact_3": "Ireland is an English-speaking nation, so no language barrier for most international students.",
+      "quick_fact_4": "Major companies like Google, Apple, and Microsoft have European offices in Ireland",
+      "meta_title": "",
+      "meta_description": "",
+      "is_published": true,
+      "is_featured": true,
+      "order": 0,
+      "created_at": "2026-02-16T10:11:09.884Z",
+      "updated_at": "2026-02-16T10:48:36.802Z"
+    }
+  },
+  {
+    "model": "study_destinations.studydestination",
+    "pk": 13,
+    "fields": {
+      "country_name": "SWEDEN",
+      "country_code": "OTHER",
+      "slug": "sweden",
+      "banner_image": "study_destinations/banners/raphael-andres-3cwvFD-YPtk-unsplash.jpg",
+      "intro_title": "SWEDEN",
+      "intro_description": "<p>Sweden is one of Europe&rsquo;s most innovative and student-friendly destinations for international education. Known for its high-quality universities, research-driven learning environment, and strong focus on creativity and sustainability, Sweden offers students a modern academic experience. With English-taught programs, a safe society, and excellent career opportunities, studying in Sweden is an attractive choice for students seeking globally recognized degrees and practical skills.</p>",
+      "quick_fact_1": "Most master’s programs and many bachelor’s programs are offered in English.",
+      "quick_fact_2": "Sweden is home to world-class institutions like Lund University and Uppsala University.",
+      "quick_fact_3": "International students are allowed to work part-time during studies without strict hourly limits.",
+      "quick_fact_4": "Graduates can apply for residence permit extension to search for jobs or start a business in Sweden.",
+      "meta_title": "",
+      "meta_description": "",
+      "is_published": true,
+      "is_featured": true,
+      "order": 0,
+      "created_at": "2026-02-16T10:28:19.834Z",
+      "updated_at": "2026-02-16T10:48:36.804Z"
+    }
+  },
+  {
+    "model": "study_destinations.studydestination",
+    "pk": 7,
+    "fields": {
+      "country_name": "Turkey",
+      "country_code": "OTHER",
+      "slug": "turkey",
+      "banner_image": "study_destinations/banners/engin-yapici-WA1u0scVLZU-unsplash.jpg",
+      "intro_title": "Turkey",
+      "intro_description": "<p>Studying in Turkey is becoming an increasingly popular choice for international students due to its high-quality education, affordable tuition fees, and rich cultural heritage. Located at the crossroads of Europe and Asia, Turkey offers a unique blend of modern academic facilities and historical traditions. With many universities offering English-taught programs and a welcoming environment for international students, Turkey provides excellent opportunities for academic and personal growth.</p>",
+      "quick_fact_1": "Tuition fees and living costs in Turkey are generally lower compared to many European countries.",
+      "quick_fact_2": "Many Turkish universities are internationally ranked and recognized worldwide.",
+      "quick_fact_3": "A wide range of bachelor’s and master’s programs are offered in English.",
+      "quick_fact_4": "Students enjoy diverse lifestyle combining European and Asian cultures, history and modern city life",
+      "meta_title": "Study in Turkey",
+      "meta_description": "",
+      "is_published": true,
+      "is_featured": false,
+      "order": 0,
+      "created_at": "2026-02-16T07:49:54.247Z",
+      "updated_at": "2026-02-16T07:49:54.247Z"
+    }
+  },
+  {
+    "model": "study_destinations.studydestination",
+    "pk": 14,
+    "fields": {
+      "country_name": "USA",
+      "country_code": "OTHER",
+      "slug": "usa",
+      "banner_image": "study_destinations/banners/study_in_usa_86a5ae999e_aV89fJd.png",
+      "intro_title": "USA",
+      "intro_description": "<p>The <strong>United States of America (USA)</strong> is one of the most popular destinations for international students. It offers world-class universities, flexible academic programs, and strong career opportunities after graduation. Students from all over the world choose the USA for its high-quality education system, diverse culture, and globally recognized degrees. Studying in the USA not only builds academic knowledge but also improves personal and professional growth.</p>",
+      "quick_fact_1": "The USA is home to many of the world’s leading universities known for research and innovation.",
+      "quick_fact_2": "Students can choose from thousands of majors and flexible course combinations.",
+      "quick_fact_3": "International students can work part-time during studies and may qualify for OPT after graduation.",
+      "quick_fact_4": "The USA hosts students from over 200 countries, providing a diverse and globally connected learning",
+      "meta_title": "",
+      "meta_description": "",
+      "is_published": true,
+      "is_featured": true,
+      "order": 0,
+      "created_at": "2026-02-16T10:36:02.802Z",
+      "updated_at": "2026-02-16T10:48:36.805Z"
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 27,
+    "fields": {
+      "destination": 10,
+      "section_title": "Application Process:",
+      "section_type": "OTHER",
+      "section_content": "<p>After preparing all the required documents, it&rsquo;s time to apply to the shortlisted universities. We have 3 methods for applying to universities in Germany. &bull; Apply directly to University Portal &bull; Apply through Uni Assist &bull; First Uni Assist (for VPD) then the University Portal If we apply through uni-assist. Uni-assist will charge application fee.1st application fee 75 Euro additional application 30 Euro per application.</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 30,
+    "fields": {
+      "destination": 10,
+      "section_title": "Attestation of documents",
+      "section_type": "OTHER",
+      "section_content": "<p>1. Matric and inter &ndash; Relevant board + IBCC 2. Transcript + Degree &ndash; HEC Initial expenses: 1. Application fee 200 to 300 EURO (Depends on applications) 2. Semester Contribution Fee 500 to 1000 Euro 3. Blocked Account 11904 Euro +Tax = Around 12300 Euro 4. Visa Fee 75 Euro</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 41,
+    "fields": {
+      "destination": 13,
+      "section_title": "Autumn Semester 2026:",
+      "section_type": "OTHER",
+      "section_content": "<p> Admissions Open: 16 October 2025 (Bachelor&rsquo;s&amp; Master&rsquo;s)</p>\r\n\r\n<p> Admissions Close: 15 January 2026 (Bachelor&rsquo;s &amp; Master&rsquo;s)</p>\r\n\r\n<p> Document Upload &amp; Application Fee Deadline (900SEK): 2 February 2026 (Bachelor&rsquo;s &amp; Master&rsquo;s)</p>\r\n\r\n<p> Admission Notification:</p>\r\n\r\n<p>◻ Master&rsquo;s: 26 March 2026</p>\r\n\r\n<p>◻ Bachelor&rsquo;s: 31 March 2026</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 25,
+    "fields": {
+      "destination": 10,
+      "section_title": "ECTS Requirements (European Credit Transfer and Accumulation System)",
+      "section_type": "OTHER",
+      "section_content": "<p>In Germany, most of the universities require 180 ECTS in Bachelor degree to give you admission in Master&rsquo;s Degree, while few universities may ask for 210 ECTS.</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 11,
+    "fields": {
+      "destination": 7,
+      "section_title": "Eligibility Criteria for Admission (Minimum):",
+      "section_type": "OTHER",
+      "section_content": "<p> Entry Requirements for Undergraduate (Bachelor&rsquo;s): 12 Years of Education with minimum 50% to 55%</p>\r\n\r\n<p> Entry Requirements for Postgraduate (Master&rsquo;s) 16 years of Education with min</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 14,
+    "fields": {
+      "destination": 8,
+      "section_title": "Eligibility Criteria for Admission (Minimum):",
+      "section_type": "OTHER",
+      "section_content": "<p> Age of Applicant: The main applicant must be 18 years of age or older.</p>\r\n\r\n<p> Entry Requirements for Undergraduate (Bachelor&rsquo;s): 12 Years of Education with minimum 55%-60%,</p>\r\n\r\n<p> Entry Requirements for Postgraduate (Master&rsquo;s) 16 years of Education with minimum 55%-</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 18,
+    "fields": {
+      "destination": 9,
+      "section_title": "Eligibility Criteria for Admission (Minimum):",
+      "section_type": "OTHER",
+      "section_content": "<p> Entry Requirements for Foundation(Diploma Stage)</p>\r\n\r\n<p> 12 Years of Education with minimum 50% to 54.9% (DS 1 OR FY)</p>\r\n\r\n<p> 12 Years of Education with minimum 55% to 69.9%(DS 2 OR IY 1)</p>\r\n\r\n<p> Entry Requirements for Undergraduate (Bachelor&rsquo;s): 12 Years of Education with minimum 70% A Level with minimum BBB Grades</p>\r\n\r\n<p> Entry Requirements for Postgraduate (Master&rsquo;s) 16 years of Education with minimum 55% or equivalent of CGPA.</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 31,
+    "fields": {
+      "destination": 11,
+      "section_title": "Eligibility Criteria for Admission (Minimum):",
+      "section_type": "OTHER",
+      "section_content": "<p> Entry Requirements for Undergraduate (Bachelor&rsquo;s):</p>\r\n\r\n<p> 12 Years of Education with minimum 70% or 2 years Bachelor with min 60%</p>\r\n\r\n<p> Entry Requirements for Postgraduate (Master&rsquo;s)</p>\r\n\r\n<p> 16 years of Education with min 60%</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 35,
+    "fields": {
+      "destination": 12,
+      "section_title": "Eligibility Criteria for Admission (Minimum):",
+      "section_type": "OTHER",
+      "section_content": "<p> Entry Requirement for high School Diploma: Matric Qualification with minimum 50% No IELTS/TOFEL Introductory Interview Age should be between 18-21</p>\r\n\r\n<p> Entry Requirements for Undergraduate (Bachelor&rsquo;s): 12 Years of Education with minimum 50%</p>\r\n\r\n<p> Entry Requirements for Postgraduate (Master&rsquo;s) 16 years of Education (No Marks Restriction)</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 39,
+    "fields": {
+      "destination": 13,
+      "section_title": "Eligibility Criteria for Admission (Minimum):",
+      "section_type": "OTHER",
+      "section_content": "<p> Age of Applicant:</p>\r\n\r\n<p>◻ The main applicant must be 18 years of age or older.</p>\r\n\r\n<p> Entry Requirements for Undergraduate (Bachelor&rsquo;s):</p>\r\n\r\n<p>◻ 12 Years of Education.</p>\r\n\r\n<p> DAE holders must provide equivalence from IBCC.</p>\r\n\r\n<p> Entry Requirements for Postgraduate (Master&rsquo;s)</p>\r\n\r\n<p>◻ 16 years of Education.</p>\r\n\r\n<p>◻ 2+2 degree or 4-year bachelor&rsquo;s degree acceptable.</p>\r\n\r\n<p>◻ B-Tech degree is not acceptable.</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 45,
+    "fields": {
+      "destination": 14,
+      "section_title": "Eligibility Criteria for Admission (Minimum):",
+      "section_type": "OTHER",
+      "section_content": "<p> Age of Applicant: The main applicant must be 18 years of age or older.</p>\r\n\r\n<p> Entry Requirements for Undergraduate (Bachelor&rsquo;s): 12 Years of Education with minimum 50%, DAE with 60%, A Level, O Level(AAB) DAE holders must provide equivalence from IBCC.</p>\r\n\r\n<p> Entry Requirements for Postgraduate (Master&rsquo;s) 16 years of Education. 2+2 degree or 4-year bachelor&rsquo;s degree acceptable. BS with minimum 2.5CGPA, 2+2(BA with 60%+MS with 2.5CGPA)</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 53,
+    "fields": {
+      "destination": 15,
+      "section_title": "Eligibility Criteria for Admission (Minimum):",
+      "section_type": "OTHER",
+      "section_content": "<p> Entry Requirements for Undergraduate (Bachelor&rsquo;s):</p>\r\n\r\n<p>12 Years of Education with minimum 60%</p>\r\n\r\n<p> Entry Requirements for Postgraduate (Master&rsquo;s)</p>\r\n\r\n<p>16 years of Education with minimum 55%</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 26,
+    "fields": {
+      "destination": 10,
+      "section_title": "English Language Requirements:",
+      "section_type": "OTHER",
+      "section_content": "<p>IELTS and Tofel Acceptable requirements warries IELTS Minimum 6.0 Overall No band less than 5.5. But some Universities may ask for C1.</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 23,
+    "fields": {
+      "destination": 10,
+      "section_title": "Entry Requirements:",
+      "section_type": "OTHER",
+      "section_content": "<p>Undergraduate: &bull; 13 Years education is acceptable in Germany for UG &bull; A Levels, &ndash; HSSC + 2 Semesters from HEC Approved University</p>\r\n\r\n<p>Postgraduate:</p>\r\n\r\n<p>General Requirements</p>\r\n\r\n<p>Each university can have different eligibility criteria. But let&rsquo;s discuss the general basic requirements that you must fulfil to become eligible for a master&rsquo;s program in Germany. You are eligible to apply for masters if you have completed any of the following &bull; 2 years ADP/Bsc + 2 years Ms &bull; 4 years Bachelor&rsquo;s degree &bull; 3 years Bachelor&rsquo;s degree</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 13,
+    "fields": {
+      "destination": 7,
+      "section_title": "Fees (Admission & Tuition Fee) :",
+      "section_type": "OTHER",
+      "section_content": "<p>Tuition Fee:(PUBLIC UNIVERSITERS:</p>\r\n\r\n<p> 300$-800$ per year PRIVATE UNIVERSITIES: 300$-20,000$ per year</p>\r\n\r\n<p> Application fee:$30 to $100 USD,(Depending on the university and program)</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 16,
+    "fields": {
+      "destination": 8,
+      "section_title": "Fees (Admission & Tuition Fee) :",
+      "section_type": "OTHER",
+      "section_content": "<p> Application Fee: 100&euro;</p>\r\n\r\n<p> Tuition Fee: 8000&euro;-20000&euro; Maximum</p>\r\n\r\n<p> Bachelor Average fee: 10000&euro;</p>\r\n\r\n<p> Master Average Fee:12000&euro;</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 20,
+    "fields": {
+      "destination": 9,
+      "section_title": "Fees (Admission & Tuition Fee) :",
+      "section_type": "OTHER",
+      "section_content": "<p>Tuition Fee: We have divided Australian Unis in 3 Categories. A, B,C, below is names, ranking and fee range to memorize.</p>\r\n\r\n<p> A CATEGORY &ndash; FEE RANGE 45K &ndash; to 50k PLUS</p>\r\n\r\n<p> B CATEGORY &ndash; FEE RANGE 38K &ndash; 40k PLUS</p>\r\n\r\n<p> C CATEGORY &ndash; FEE RANGE 28-30K PLUS</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 37,
+    "fields": {
+      "destination": 12,
+      "section_title": "Fees (Admission & Tuition Fee) :",
+      "section_type": "OTHER",
+      "section_content": "<p> Tuition Fee: 4000&euro;-8000&euro;(first year)</p>\r\n\r\n<p> Initial Deposit:</p>\r\n\r\n<p> For high School Diploma-8000&euro;</p>\r\n\r\n<p> Undergraduate/Postgraduate-4000&euro;</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 42,
+    "fields": {
+      "destination": 13,
+      "section_title": "Fees (Admission & Tuition Fee) :",
+      "section_type": "OTHER",
+      "section_content": "<p>◻ Application Fee: 900 SEK</p>\r\n\r\n<p>◻ Tuition Fee: 55,000 &ndash; 87,500 SEK (first semester)</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 48,
+    "fields": {
+      "destination": 14,
+      "section_title": "Fees (Admission & Tuition Fee) :",
+      "section_type": "OTHER",
+      "section_content": "<p> Tuition Fee: 12000 &ndash; 35000 USD (first year)</p>\r\n\r\n<p> Scholarship : Depends on University you can get 10%, 20%, 30%, 50%</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 55,
+    "fields": {
+      "destination": 15,
+      "section_title": "Fees (Admission & Tuition Fee) :",
+      "section_type": "OTHER",
+      "section_content": "<p>Tuition Fee:(PUBLIC UNIVERSITERS)</p>\r\n\r\n<p> &euro;2,895 per year for undergraduate (Licence) studies</p>\r\n\r\n<p> &euro;3,941 per year for Master&rsquo;s studies</p>\r\n\r\n<p>PRIVATE UNIVERSITIES:</p>\r\n\r\n<p>(&euro;6,000 to &euro;18,000 per year )</p>\r\n\r\n<p>(50% of tuition fee should be paid from Pakistan)</p>\r\n\r\n<p> Application fee:30,000PKR</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 17,
+    "fields": {
+      "destination": 8,
+      "section_title": "Financial Requirements (Bank Statement) :",
+      "section_type": "OTHER",
+      "section_content": "<p>Bank Statement (Student&rsquo;s Own Account):</p>\r\n\r\n<p> Main Applicant &ndash; &euro;9,600/year Additional Bank Statement Requirements (included in main applicant&rsquo;s account):</p>\r\n\r\n<p> Spouse: 7320 &euro;  1st Child: 7320 &euro; (480&euro;)(360&euro;) Bank statement formula: Remaining fee +living cost=bank statement</p>\r\n\r\n<p> Health Insurance &ndash; Valid for the entire stay (minimum coverage &euro;40,000)</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 21,
+    "fields": {
+      "destination": 9,
+      "section_title": "Financial Requirements (Bank Statement) :",
+      "section_type": "OTHER",
+      "section_content": "<p>Bank statement formula:</p>\r\n\r\n<p> Remaining tuition fee + 1 year of Living(29710 AUD) + 2200 AUD travel=9.5 to 11.5 Million PKR.</p>\r\n\r\n<p> If University tuition fee is 35000 AUD, then adding living and travel exp together bank statement will be 64710 AUD equal to 17.9 million PKR Approx Australian Universities require 6 months bank statement with funds in account for last 3 months with a proper source of funds documentation that shows that from where this money has come from.</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 34,
+    "fields": {
+      "destination": 11,
+      "section_title": "Financial Requirements (Bank Statement) :",
+      "section_type": "OTHER",
+      "section_content": "<p>23,000 &euro; (3-4 months old working)</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 38,
+    "fields": {
+      "destination": 12,
+      "section_title": "Financial Requirements (Bank Statement) :",
+      "section_type": "OTHER",
+      "section_content": "<p> Student&rsquo;s Personal Account (Even Fresh Account is  acceptable).</p>\r\n\r\n<p> Balance 25 lac, not less than 25 lac.</p>\r\n\r\n<p> Bank Statement&rsquo;s original last page (closing balance page)</p>\r\n\r\n<p> should be an apostille from MOFA).</p>\r\n\r\n<p> Account Maintenance Certificate (Apostille from MOFA)</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 44,
+    "fields": {
+      "destination": 13,
+      "section_title": "Financial Requirements (Bank Statement) :",
+      "section_type": "OTHER",
+      "section_content": "<p>Bank Statement (Student&rsquo;s Own Account): 137592 SEK Additional Bank Statement Requirements (included in main applicant&rsquo;s account):</p>\r\n\r\n<p>◻ Spouse: 57330 SEK</p>\r\n\r\n<p>◻ Each Child: 34398 SEK Bank statement formula: Remaining fee +living cost=bank statement 55,000 &ndash; 87,500 SEK+137592SEK=Bank statement</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 52,
+    "fields": {
+      "destination": 14,
+      "section_title": "Financial Requirements (Bank Statement) :",
+      "section_type": "OTHER",
+      "section_content": "<p>Bank Statement (Student&rsquo;s Own Account): Depends on University Mostly 75lac - 1 crore Spouse: Half of living cost of Main Applicant</p>\r\n\r\n<p>Bank statement formula: Remaining fee(1 year) +living cost=bank statement</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 56,
+    "fields": {
+      "destination": 15,
+      "section_title": "Financial Requirements (Bank Statement) :",
+      "section_type": "OTHER",
+      "section_content": "<p>Student&rsquo;s Personal Account 45lac+(6 Month)</p>\r\n\r\n<p>Bank statement formula:</p>\r\n\r\n<p> Remaining fee +living cost(7380&euro;)=bank statement</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 24,
+    "fields": {
+      "destination": 10,
+      "section_title": "Grade Requirements",
+      "section_type": "OTHER",
+      "section_content": "<p>You must have a minimum 2.7 or Above CGPA in your bachelor&#39;s degree. That&rsquo;s a minimum, and it is always better to have a higher CGPA. You can convert your Pakistani CGPA to German using this Tool Grade Conversion Formula for Grades Earned Outside Germany - TUM. (Hint: Minimum passing grade in Pakistan is usually 2.0) Apart from Grade and Language requirement, some courses may also have ECTS requirement</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 22,
+    "fields": {
+      "destination": 10,
+      "section_title": "INTAKES:",
+      "section_type": "OTHER",
+      "section_content": "<p>1. Winter intake</p>\r\n\r\n<p>2. Summar Intake</p>\r\n\r\n<p>1. Winter intake: &bull; Application starts in March and April &bull; Classes Start in October &bull; Major Intake, 1200 + English Taught courses 2. Summar Intake &bull; Application starts in Oct/Nov &bull; Classes start in April &bull; Short intake, 500 English Taught Courses</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 49,
+    "fields": {
+      "destination": 14,
+      "section_title": "Processing",
+      "section_type": "OTHER",
+      "section_content": "<p> Firstly, we will apply for admission in universities.</p>\r\n\r\n<p> Within 1 or 1.5 week you will get conditional letter, if there is any condition.</p>\r\n\r\n<p> After fulfilling all Conditions you will get Unconditional .</p>\r\n\r\n<p> Then you will show Bank statement to your University .(1 day of maturity is also acceptable but for visa at least 15 days ideal also anyone can sponsor you but it is ideal that the bank statement is of student or parents).</p>\r\n\r\n<p> Then University will give you I-20(backbone of F1 visa).</p>\r\n\r\n<p> After getting I-20 we will apply for visa.</p>\r\n\r\n<p> You get 5 years Visa Stamp.</p>\r\n\r\n<p> Bachelors duration is 4 years &amp; Master duration is of 2 years.</p>\r\n\r\n<p> After study you will get OPT of 3 years .</p>\r\n\r\n<p> Within in these 3 years(OPT) you will get Work Permit.</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 33,
+    "fields": {
+      "destination": 11,
+      "section_title": "Proof of English Language Proficiency:",
+      "section_type": "OTHER",
+      "section_content": "<p> IELTS</p>\r\n\r\n<p> PTE</p>\r\n\r\n<p> TOFEL IBT</p>\r\n\r\n<p> DUOLINGO</p>\r\n\r\n<p> LANGUAGE CERT</p>\r\n\r\n<p> CAMBRIDGE TEST</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 12,
+    "fields": {
+      "destination": 7,
+      "section_title": "REQUIRED DOCUMENTS FOR ADMISSION:",
+      "section_type": "OTHER",
+      "section_content": "<p> Original Matric &amp; Intermediate Certificates and result cards attested from BISE and IBCC</p>\r\n\r\n<p> University degree(s) &amp; transcript(s) attested from HEC and MOFA</p>\r\n\r\n<p> Original Passport</p>\r\n\r\n<p> CNIC(Student/Parents)</p>\r\n\r\n<p> Updated CV</p>\r\n\r\n<p> Recommendation Letter</p>\r\n\r\n<p> Photos Passport size Color (2)</p>\r\n\r\n<p> Proof of English Language Proficiency:(TOFEL, IELTS ) Typically IELTS 5.0&ndash;6.0 (or equivalent) for English programme.</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 19,
+    "fields": {
+      "destination": 9,
+      "section_title": "REQUIRED DOCUMENTS FOR ADMISSION:",
+      "section_type": "OTHER",
+      "section_content": "<p> Original Matric &amp; Intermediate Certificates</p>\r\n\r\n<p> University degree(s) &amp; transcript(s)</p>\r\n\r\n<p> Original Passport(first two pages with signature)</p>\r\n\r\n<p> CNIC(Student/Parents)</p>\r\n\r\n<p> Updated CV</p>\r\n\r\n<p> Salary statement</p>\r\n\r\n<p> Experience letter (For Gap)</p>\r\n\r\n<p> Proof of English Language Proficiency:(TOFEL, IELTS,PTE ) Generally, universities require a band score between 5.5 and 7.0,</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 32,
+    "fields": {
+      "destination": 11,
+      "section_title": "REQUIRED DOCUMENTS FOR ADMISSION:",
+      "section_type": "OTHER",
+      "section_content": "<p> Original Matric &amp; Intermediate Certificates and result cards(Attested fromBoard &amp; IBCC)</p>\r\n\r\n<p> University degree(s) &amp; transcript(s) (Attested from HEC and Apostille fromMOFA)</p>\r\n\r\n<p> Original Passport</p>\r\n\r\n<p> CNIC(Student/Parents)</p>\r\n\r\n<p> Updated CV</p>\r\n\r\n<p> SOP if have professional experience</p>\r\n\r\n<p> Recommendation Letter 2 for Bachelor &amp; 1 for Master</p>\r\n\r\n<p> FRC(issued by NADRA)</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 40,
+    "fields": {
+      "destination": 13,
+      "section_title": "REQUIRED DOCUMENTS FOR ADMISSION:",
+      "section_type": "OTHER",
+      "section_content": "<p> Original Matric &amp; Intermediate Certificates and result cards</p>\r\n\r\n<p> attested by BISE &amp; IBCC.</p>\r\n\r\n<p> University degree(s) &amp;transcript(s) attested byHEC &amp; MOFA</p>\r\n\r\n<p> Updated CV</p>\r\n\r\n<p> Recommendation Letter .</p>\r\n\r\n<p> SOP</p>\r\n\r\n<p> Proof of EnglishLanguage Proficiency:</p>\r\n\r\n<p> IELTS 6.5 (no band less than 5.5), or</p>\r\n\r\n<p> PTE 62 (Writing: 61 mandatory), or</p>\r\n\r\n<p> TOEFL IBT 90 (Writing: 20 mandatory)</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 54,
+    "fields": {
+      "destination": 15,
+      "section_title": "REQUIRED DOCUMENTS FOR ADMISSION:",
+      "section_type": "OTHER",
+      "section_content": "<p> Original Matric &amp; Intermediate Certificates and result cards attested from BISE and IBCC</p>\r\n\r\n<p> University degree(s) &amp; transcript(s) attested from HEC and MOFA</p>\r\n\r\n<p> Original Passport</p>\r\n\r\n<p> CNIC(Student/Parents)</p>\r\n\r\n<p> Updated CV</p>\r\n\r\n<p> Recommendation Letter</p>\r\n\r\n<p> Photos Passport size Color (2)</p>\r\n\r\n<p> Proof of English Language Proficiency:(TOFEL, IELTS )</p>\r\n\r\n<p>Typically IELTS 6.0&ndash;6.5 (or equivalent) for English programme; for French-taught programme B2 (DELF/B2 or equivalent) commonly required.</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 15,
+    "fields": {
+      "destination": 8,
+      "section_title": "REQUIRED DOCUMENTS FORADMISSION:",
+      "section_type": "OTHER",
+      "section_content": "<p> Original Matric &amp; Intermediate Certificates and result cards attested by BISE &amp; IBCC</p>\r\n\r\n<p>.  University degree(s) &amp; transcript(s) attested by HEC&amp;MOFA</p>\r\n\r\n<p> Updated CV</p>\r\n\r\n<p> Recommendation Letter .</p>\r\n\r\n<p> Passport</p>\r\n\r\n<p> CNIC</p>\r\n\r\n<p> Photos Passport size (2)</p>\r\n\r\n<p> Proof of English Language Proficiency: For Undergraduate:</p>\r\n\r\n<p> IELTS 6 (no band less than 5.5), or</p>\r\n\r\n<p> PTE 54(no less than 42)</p>\r\n\r\n<p> TOEFL 78(in writing 20) For Postgraduate:</p>\r\n\r\n<p> IELTS 6.5 (no band less than 6.0), or</p>\r\n\r\n<p> PTE 62 - 42 or  TOFEL92</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 36,
+    "fields": {
+      "destination": 12,
+      "section_title": "REQUIRED DOCUMENTS FORADMISSION:",
+      "section_type": "OTHER",
+      "section_content": "<p> Original Matric &amp; Intermediate Certificates and result cards(Colored Copies front/back attested from IBCC and Apostille from MOFA)</p>\r\n\r\n<p> University degree(s) &amp; transcript(s) (Colored Copies front/back attested from HEC and Apostille from MOFA)</p>\r\n\r\n<p> Original Passport</p>\r\n\r\n<p> CNIC(Student/Parents)</p>\r\n\r\n<p> Updated CV</p>\r\n\r\n<p> Recommendation Letter</p>\r\n\r\n<p> FRC(issued by NADRA)</p>\r\n\r\n<p> Police Character Certificate Original(issued by Local Police Department)</p>\r\n\r\n<p> Medical Certificate Original(issued by any Govt. Hospital)</p>\r\n\r\n<p> HIV/AIDS</p>\r\n\r\n<p> Heptities B&amp;C</p>\r\n\r\n<p> Chest X-ray</p>\r\n\r\n<p> Syphilis/VDRL</p>\r\n\r\n<p> Photos Passport size Color (2)</p>\r\n\r\n<p> Proof of English Language Proficiency:</p>\r\n\r\n<p>For FoundationYear:</p>\r\n\r\n<p> IELTS 4</p>\r\n\r\n<p> PTE 43</p>\r\n\r\n<p> TOFEL IBT 41</p>\r\n\r\n<p>For Undergraduate/Postgraduate:</p>\r\n\r\n<p> IELTS 5</p>\r\n\r\n<p> PTE 58</p>\r\n\r\n<p> TOEFL 71</p>\r\n\r\n<p> Passport skill Plus Test-5.5</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 46,
+    "fields": {
+      "destination": 14,
+      "section_title": "REQUIRED DOCUMENTS FORADMISSION:",
+      "section_type": "OTHER",
+      "section_content": "<p> Original Matric &amp; Intermediate Certificates and result cards</p>\r\n\r\n<p> University degree(s) &amp; transcript(s)</p>\r\n\r\n<p> Updated CV</p>\r\n\r\n<p> Recommendation Letter .</p>\r\n\r\n<p> Bank Statement (Depends on University) approximately 75lac - 1 crore(1 day maturity is also acceptable)</p>\r\n\r\n<p> Proof of English Language Proficiency: For Undergraduate:</p>\r\n\r\n<p> IELTS 6 (no band less than 5.5), or</p>\r\n\r\n<p> PTE 59 overall or</p>\r\n\r\n<p> TOEFL 80-85</p>\r\n\r\n<p> Duolingo 100-110 For Postgraduate:</p>\r\n\r\n<p> IELTS 6.5 (no band less than 6.0), or</p>\r\n\r\n<p> PTE 64 - 59 or</p>\r\n\r\n<p> TOEFL 90overall</p>\r\n\r\n<p> Duolingo 110-120 There is also a free of cost University Internal English Test(ITEP).</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 29,
+    "fields": {
+      "destination": 10,
+      "section_title": "Required documents for application",
+      "section_type": "OTHER",
+      "section_content": "<p>Here is the general list of documents that you need to apply to German Universities &bull; Educational Documents &bull; Bachelor degree + transcript &bull; Matric and Inter Certificate (O/A level) + Grade sheet &bull; Passport &bull; IELT &bull; CV + Professional Experience (if any) &bull; Internships, Extra Curricular Activities, Certifications (If ANY) &bull; Letter of Motivation &bull; Letter of Recommendation &bull; Few universities may ask for GRE or other test The GRE (Graduate Record Examinations) is a standardized computer-based test, developed by ETS, that many graduate programs, including business and law schools, require for admission. It measures critical thinking, analytical writing, verbal reasoning, and quantitative reasoning skills that are relevant to graduate-level study across various fields.</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 47,
+    "fields": {
+      "destination": 14,
+      "section_title": "Semester 2026:",
+      "section_type": "OTHER",
+      "section_content": "<p>There are four Intakes.</p>\r\n\r\n<p> January Semester 2026</p>\r\n\r\n<p> March Semester 2026</p>\r\n\r\n<p> May Semester 2026</p>\r\n\r\n<p> September Semester 2026</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 28,
+    "fields": {
+      "destination": 10,
+      "section_title": "Tuition fee:",
+      "section_type": "OTHER",
+      "section_content": "<p>Mostly public universities charge 0 Tuition fee. But some public universities may ask for Tuition fee. which start from 1000 &ndash; 8000 EURO Per semester. &bull; All the public universities required 500 to 1000 Euro semester contribution fee.</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 43,
+    "fields": {
+      "destination": 13,
+      "section_title": "Visa Application Fee:",
+      "section_type": "OTHER",
+      "section_content": "<p>◻ Main Applicant: 1,500 SEK</p>\r\n\r\n<p>◻ Spouse (if applicable): 1,500 SEK Child (if applicable): 750 SEK</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 51,
+    "fields": {
+      "destination": 14,
+      "section_title": "Visa Application Fee:",
+      "section_type": "OTHER",
+      "section_content": "<p>Main Applicant: 185USD</p>\r\n\r\n<p>Spouse (if applicable): 185USD</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.destinationsection",
+    "pk": 50,
+    "fields": {
+      "destination": 14,
+      "section_title": "Visa Required Documents:",
+      "section_type": "OTHER",
+      "section_content": "<p> Passport</p>\r\n\r\n<p> Educational Documents</p>\r\n\r\n<p> I - 20 Letter</p>\r\n\r\n<p> After I-20 fill the DS160 form</p>\r\n\r\n<p> Then pay SEVIS Fee 350USD (valid for 1 year).</p>\r\n\r\n<p> Health Insurance (depends on university1500-3000usd)</p>\r\n\r\n<p> First Semester fee reciept or Initial deposit (200-4000USD) if university required.</p>",
+      "order": 0,
+      "is_active": true
+    }
+  },
+  {
+    "model": "study_destinations.tuitiontable",
+    "pk": 14,
+    "fields": {
+      "destination": 8,
+      "program_name": "All Programs",
+      "program_level": "POSTGRADUATE",
+      "tuition_fee_min": "8000.00",
+      "tuition_fee_max": "20000.00",
+      "duration_years": "-",
+      "notes": "",
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.tuitiontable",
+    "pk": 16,
+    "fields": {
+      "destination": 11,
+      "program_name": "All Programs",
+      "program_level": "POSTGRADUATE",
+      "tuition_fee_min": "10000.00",
+      "tuition_fee_max": "30000.00",
+      "duration_years": "-",
+      "notes": "",
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.tuitiontable",
+    "pk": 13,
+    "fields": {
+      "destination": 8,
+      "program_name": "All Programs",
+      "program_level": "UNDERGRADUATE",
+      "tuition_fee_min": "8000.00",
+      "tuition_fee_max": "20000.00",
+      "duration_years": "-",
+      "notes": "",
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.tuitiontable",
+    "pk": 15,
+    "fields": {
+      "destination": 11,
+      "program_name": "All Programs",
+      "program_level": "UNDERGRADUATE",
+      "tuition_fee_min": "10000.00",
+      "tuition_fee_max": "25000.00",
+      "duration_years": "-",
+      "notes": "",
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.intaketable",
+    "pk": 12,
+    "fields": {
+      "destination": 7,
+      "intake_name": "Fall",
+      "intake_month": "September",
+      "application_deadline": "-",
+      "visa_deadline": "",
+      "is_main_intake": false,
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.intaketable",
+    "pk": 15,
+    "fields": {
+      "destination": 9,
+      "intake_name": "February",
+      "intake_month": "First intake= February",
+      "application_deadline": "-",
+      "visa_deadline": "",
+      "is_main_intake": false,
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.intaketable",
+    "pk": 13,
+    "fields": {
+      "destination": 8,
+      "intake_name": "January",
+      "intake_month": "January",
+      "application_deadline": "-",
+      "visa_deadline": "",
+      "is_main_intake": false,
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.intaketable",
+    "pk": 23,
+    "fields": {
+      "destination": 15,
+      "intake_name": "January",
+      "intake_month": "January",
+      "application_deadline": "-",
+      "visa_deadline": "",
+      "is_main_intake": false,
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.intaketable",
+    "pk": 17,
+    "fields": {
+      "destination": 9,
+      "intake_name": "October/ November",
+      "intake_month": "October/ November",
+      "application_deadline": "-",
+      "visa_deadline": "",
+      "is_main_intake": false,
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.intaketable",
+    "pk": 14,
+    "fields": {
+      "destination": 8,
+      "intake_name": "September",
+      "intake_month": "September",
+      "application_deadline": "-",
+      "visa_deadline": "",
+      "is_main_intake": false,
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.intaketable",
+    "pk": 24,
+    "fields": {
+      "destination": 15,
+      "intake_name": "September",
+      "intake_month": "September",
+      "application_deadline": "-",
+      "visa_deadline": "",
+      "is_main_intake": false,
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.intaketable",
+    "pk": 11,
+    "fields": {
+      "destination": 7,
+      "intake_name": "Spring",
+      "intake_month": "January",
+      "application_deadline": "-",
+      "visa_deadline": "",
+      "is_main_intake": false,
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.intaketable",
+    "pk": 22,
+    "fields": {
+      "destination": 12,
+      "intake_name": "Summer(only Foundation)",
+      "intake_month": "-",
+      "application_deadline": "-",
+      "visa_deadline": "",
+      "is_main_intake": false,
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.intaketable",
+    "pk": 18,
+    "fields": {
+      "destination": 11,
+      "intake_name": "fall",
+      "intake_month": "-",
+      "application_deadline": "-",
+      "visa_deadline": "",
+      "is_main_intake": false,
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.intaketable",
+    "pk": 20,
+    "fields": {
+      "destination": 12,
+      "intake_name": "fall",
+      "intake_month": "-",
+      "application_deadline": "-",
+      "visa_deadline": "",
+      "is_main_intake": false,
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.intaketable",
+    "pk": 16,
+    "fields": {
+      "destination": 9,
+      "intake_name": "july",
+      "intake_month": "july",
+      "application_deadline": "-",
+      "visa_deadline": "",
+      "is_main_intake": false,
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.intaketable",
+    "pk": 19,
+    "fields": {
+      "destination": 11,
+      "intake_name": "spring",
+      "intake_month": "-",
+      "application_deadline": "-",
+      "visa_deadline": "",
+      "is_main_intake": false,
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.intaketable",
+    "pk": 21,
+    "fields": {
+      "destination": 12,
+      "intake_name": "spring",
+      "intake_month": "-",
+      "application_deadline": "-",
+      "visa_deadline": "",
+      "is_main_intake": false,
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.visarequirement",
+    "pk": 4,
+    "fields": {
+      "destination": 7,
+      "visa_type": "STUDENT",
+      "visa_name": "REQUIRED DOCUMENTS FOR ADMISSION:",
+      "processing_time": "2 Months",
+      "visa_fee": "9000+3000PKR",
+      "financial_requirement": "",
+      "documents_required": "",
+      "eligibility_criteria": "",
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.visarequirement",
+    "pk": 5,
+    "fields": {
+      "destination": 8,
+      "visa_type": "STUDENT",
+      "visa_name": "-",
+      "processing_time": "8 to 10 month",
+      "visa_fee": "Main Applicant: 450€  Spouse : 530€  Child:270€",
+      "financial_requirement": "",
+      "documents_required": "",
+      "eligibility_criteria": "",
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.visarequirement",
+    "pk": 6,
+    "fields": {
+      "destination": 9,
+      "visa_type": "STUDENT",
+      "visa_name": "-",
+      "processing_time": "6 Months",
+      "visa_fee": "2000AUD",
+      "financial_requirement": "",
+      "documents_required": "",
+      "eligibility_criteria": "",
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.visarequirement",
+    "pk": 7,
+    "fields": {
+      "destination": 11,
+      "visa_type": "STUDENT",
+      "visa_name": "-",
+      "processing_time": "3 Months",
+      "visa_fee": "Main Applicant: 130€ - 150€",
+      "financial_requirement": "",
+      "documents_required": "",
+      "eligibility_criteria": "",
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.visarequirement",
+    "pk": 8,
+    "fields": {
+      "destination": 12,
+      "visa_type": "STUDENT",
+      "visa_name": "-",
+      "processing_time": "3 Months",
+      "visa_fee": "Main Applicant: 60€-90€",
+      "financial_requirement": "",
+      "documents_required": "",
+      "eligibility_criteria": "",
+      "order": 0
+    }
+  },
+  {
+    "model": "study_destinations.visarequirement",
+    "pk": 9,
+    "fields": {
+      "destination": 15,
+      "visa_type": "STUDENT",
+      "visa_name": "-",
+      "processing_time": "6 to 8 Months",
+      "visa_fee": "Main Applicant: 90€",
+      "financial_requirement": "",
+      "documents_required": "",
+      "eligibility_criteria": "",
+      "order": 0
+    }
+  },
+  {
+    "model": "applications.application",
+    "pk": 1,
+    "fields": {
+      "application_id": "APP-202602-9601",
+      "client": 7,
+      "destination": 8,
+      "status": "SUBMITTED",
+      "full_name": "SUFFIAN AHMAD",
+      "phone_number": "03270733550",
+      "email": "suffianahmad18@gmail.com",
+      "last_qualification": "fsc (pre -medical)",
+      "grade_marks": "60%",
+      "completion_year": 2022,
+      "destination_country": "Finland",
+      "preferred_course": "BS in Software Engineering",
+      "english_test": "IELTS",
+      "english_score": "7 bands",
+      "visa_refusal": false,
+      "visa_refusal_details": "",
+      "assigned_staff": null,
+      "submitted_date": "2026-02-16T11:13:31.893Z",
+      "last_updated": "2026-02-16T11:13:31.893Z",
+      "decision_date": null,
+      "notes": "",
+      "rejection_reason": ""
+    }
+  },
+  {
+    "model": "applications.document",
+    "pk": 1,
+    "fields": {
+      "application": 1,
+      "document_type": "PASSPORT",
+      "file": "application_documents/study_in_canada_2d181882d2.png",
+      "uploaded_at": "2026-02-16T12:00:28.715Z",
+      "verified": true,
+      "verification_notes": "good"
+    }
+  },
+  {
+    "model": "messaging.message",
+    "pk": 3,
+    "fields": {
+      "sender": 1,
+      "receiver": 7,
+      "application": null,
+      "subject": "Re: others",
+      "body": "ok",
+      "is_read": true,
+      "created_at": "2026-02-16T13:23:05.047Z"
+    }
+  },
+  {
+    "model": "messaging.message",
+    "pk": 2,
+    "fields": {
+      "sender": 7,
+      "receiver": 1,
+      "application": null,
+      "subject": "others",
+      "body": "hi, am suffian",
+      "is_read": false,
+      "created_at": "2026-02-16T13:22:29.601Z"
+    }
+  },
+  {
+    "model": "messaging.message",
+    "pk": 1,
+    "fields": {
+      "sender": 7,
+      "receiver": 1,
+      "application": null,
+      "subject": "others",
+      "body": "hi, am suffian ahmad",
+      "is_read": true,
+      "created_at": "2026-02-16T13:19:19.513Z"
+    }
+  }
+]

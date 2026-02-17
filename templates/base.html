@@ -1,0 +1,222 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ site_name }}{% endblock %}</title>
+    {% load static %}
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: #0d6efd !important;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        .card {
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .progress-bar {
+            transition: width 1s ease-in-out;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'core:home' %}">
+    <img src="{% static 'images/logo.png' %}" alt="Logo" height="45" class="me-2">
+    <span>{{ site_name }}</span>
+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'core:home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'study_destinations:list' %}">
+                           <i class="fas fa-graduation-cap me-1"></i> Study Destinations
+                         </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'core:about' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'core:faq' %}">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'testimonials:testimonial_list' %}">
+                       <i class="fas fa-star me-1"></i> Success Stories
+                     </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'core:contact' %}">Contact</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'dashboard:application_list' %}">Dashboard</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                
+                {% if user.is_staff %}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'messaging:admin_inbox' %}">
+        <i class="fas fa-inbox me-1"></i> Admin Inbox
+        {% if unread_count %}
+        <span class="badge bg-danger">{{ unread_count }}</span>
+        {% endif %}
+    </a>
+</li>
+{% endif %}
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-user"></i> {{ user.get_full_name|default:user.username }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">Profile</a></li>
+                                <li><a class="dropdown-item" href="{% url 'dashboard:application_list' %}">My Applications</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">
+    <i class="fas fa-sign-out-alt me-2"></i> Logout
+</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="btn btn-outline-primary me-2" href="{% url 'accounts:login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary" href="{% url 'accounts:register' %}">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Messages -->
+    <div class="container mt-3">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5><i class="fas fa-passport"></i> {{ site_name }}</h5>
+                <p class="mb-2">
+                    <i class="fas fa-map-marker-alt me-2"></i>
+                    CB 181, Kashmir Colony Rahwali Cantt
+                </p>
+                <p class="mb-2">Gujranwala, Punjab 52250</p>
+                <p class="mb-2">Pakistan</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Contact Info</h5>
+                <p class="mb-2">
+                    <i class="fas fa-phone me-2"></i> {{ contact_phone }}
+                </p>
+                <p class="mb-2">
+                    <i class="fas fa-envelope me-2"></i> {{ contact_email }}
+                </p>
+                <p class="mb-2">
+                    <i class="fas fa-clock me-2"></i> Mon-Fri: 9AM-7PM
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'core:contact' %}#map" class="text-decoration-none">
+                        <i class="fas fa-map-marker-alt me-1"></i> Visit Our Office
+                    </a></li>
+                    <li><a href="tel:{{ contact_phone|cut:' ' }}" class="text-decoration-none">
+                        <i class="fas fa-phone me-1"></i> Call for Appointment
+                    </a></li>
+                    <li><a href="https://maps.app.goo.gl/WCZJXFzSzocwy7Z38" target="_blank" class="text-decoration-none">
+                        <i class="fas fa-directions me-1"></i> Get Directions
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <small class="text-muted">
+                    <i class="fas fa-map-pin me-1"></i>
+                    Serving Gujranwala and surrounding areas since 2015
+                </small>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <small class="text-muted">
+                    <i class="fas fa-copyright me-1"></i>
+                    {% now "Y" %} {{ site_name }}. All rights reserved.
+                </small>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+// Simple scroll animation
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.card, .row > div, section');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    
+    cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+    });
+});
+</script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

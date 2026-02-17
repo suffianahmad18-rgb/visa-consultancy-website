@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+
+{% block title %}FAQ - {{ site_name }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="display-4 text-center mb-5">Frequently Asked Questions</h1>
+    
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="accordion" id="faqAccordion">
+                
+                <!-- Question 1 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            How long does the visa application process take?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Processing times vary depending on the country and visa type. Generally:
+                            <ul>
+                               
+                                <li>Study visas: 4-8 weeks</li>
+                                <li>Immigration visas: 3-6 months</li>
+                            </ul>
+                            We provide estimated timelines for each visa category.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question 2 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            What documents do I need to apply?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Required documents vary by visa type, but typically include:
+                            <ul>
+                                <li>Valid passport (6+ months validity)</li>
+                                <li>Passport-sized photographs</li>
+                                <li>Proof of financial means</li>
+                                <li>Travel itinerary</li>
+                                <li>Invitation letter (if applicable)</li>
+                                <li>Employment/education documents</li>
+                            </ul>
+                            We provide a customized checklist for your specific application.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question 3 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            What is your success rate?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            We maintain a 98% success rate across all visa categories. Our success is due to:
+                            <ul>
+                                <li>Experienced consultants who understand requirements</li>
+                                <li>Thorough document verification</li>
+                                <li>Mock interviews and preparation</li>
+                                <li>Follow-up with embassies/consulates</li>
+                                <li>Correction of applications before submission</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question 4 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            Where is your office located?
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Our office is located in Gujranwala, Pakistan. The exact address is listed on our website under the "Contact Us" section.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question 5 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                             How many universities and colleges do Uni World Consultancy represent?
+                        </button>
+                    </h2>
+                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            We are official representatives of over 500+ universities and colleges worldwide, offering diverse options to our students.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question 6 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                            Can I track my application status?
+                        </button>
+                    </h2>
+                    <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! Our client portal allows you to:
+                            <ul>
+                                <li>Track real-time application status</li>
+                                <li>Upload documents securely</li>
+                                <li>Communicate with your consultant</li>
+                                <li>View payment history</li>
+                                <li>Download application copies</li>
+                                <li>Receive email notifications for updates</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question 7 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                            What services does Uni World Consultancy offer?
+                        </button>
+                    </h2>
+                    <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Times Consultant assists students with a comprehensive range of services including admissions guidance, scholarship opportunities, visa application support, IELTS preparation, permanent residency (PR) advice, and immigration processes.
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="card mt-5">
+                <div class="card-body text-center">
+                    <h3>Still Have Questions?</h3>
+                    <p class="lead">Contact our support team for personalized assistance</p>
+                    <a href="{% url 'core:contact' %}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-headset"></i> Contact Support
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

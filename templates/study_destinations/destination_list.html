@@ -1,0 +1,113 @@
+<!-- templates/study_destinations/destination_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Study Destinations - {{ site_name }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Hero Section -->
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-4 mb-3">Study Destinations</h1>
+            <p class="lead">Explore top study destinations around the world with detailed guides on universities, costs, scholarships, and visa requirements.</p>
+        </div>
+    </div>
+    
+    <!-- Featured Destinations -->
+    {% if featured_destinations %}
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="text-center mb-4">Featured Destinations</h2>
+            <div class="row">
+                {% for destination in featured_destinations %}
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-img-top" style="height: 150px; overflow: hidden;">
+                            {% if destination.banner_image %}
+                            <img src="{{ destination.banner_image.url }}" 
+                                 alt="{{ destination.country_name }}"
+                                 class="img-fluid w-100" 
+                                 style="object-fit: cover; height: 100%;">
+                            {% endif %}
+                        </div>
+                        <div class="card-body text-center">
+                            <h4 class="card-title">{{ destination.get_flag_emoji }} {{ destination.country_name }}</h4>
+                            <p class="card-text text-muted">{{ destination.intro_title|truncatewords:15 }}</p>
+                            <a href="{{ destination.get_absolute_url }}" class="btn btn-primary">Explore {{ destination.country_name }}</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- All Destinations -->
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4">All Study Destinations</h2>
+            <div class="row">
+                {% for destination in destinations %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="me-3">
+                                    <span style="font-size: 2rem;">{{ destination.get_flag_emoji }}</span>
+                                </div>
+                                <div>
+                                    <h4 class="mb-0">{{ destination.country_name }}</h4>
+                                    <small class="text-muted">{{ destination.get_country_code_display }}</small>
+                                </div>
+                            </div>
+                            
+                            <p class="card-text">{{ destination.intro_description|striptags|truncatewords:30 }}</p>
+                            
+                            <!-- Quick Facts -->
+                            {% if destination.quick_fact_1 %}
+                            <div class="row small text-muted mb-3">
+                                <div class="col-6">
+                                    <i class="fas fa-check-circle text-success me-1"></i> {{ destination.quick_fact_1 }}
+                                </div>
+                                {% if destination.quick_fact_2 %}
+                                <div class="col-6">
+                                    <i class="fas fa-check-circle text-success me-1"></i> {{ destination.quick_fact_2 }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                            
+                            <a href="{{ destination.get_absolute_url }}" class="btn btn-outline-primary w-100">
+                                <i class="fas fa-info-circle me-2"></i> View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12 text-center py-5">
+                    <i class="fas fa-globe-americas fa-3x text-muted mb-3"></i>
+                    <h3>No Study Destinations Available</h3>
+                    <p class="text-muted">Check back soon for destination guides</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- CTA -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card shadow bg-primary text-white">
+                <div class="card-body text-center p-5">
+                    <h2 class="mb-3">Need Help Choosing a Destination?</h2>
+                    <p class="lead mb-4">Book a free consultation with our education experts</p>
+                    <a href="{% url 'core:contact' %}" class="btn btn-light btn-lg">
+                        <i class="fas fa-calendar-check me-2"></i> Book Free Consultation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

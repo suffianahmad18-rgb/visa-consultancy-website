@@ -1,0 +1,546 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Contact Us - {{ site_name }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="display-4 text-center mb-5">Contact Us</h1>
+    
+    <div class="row">
+        <div class="col-lg-6 mb-5">
+            <div class="card shadow h-100">
+                <div class="card-body p-4">
+                    <h3 class="mb-4">Get In Touch</h3>
+                    
+                    <div class="contact-info mb-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Address</h6>
+                                <p class="mb-0">CB 181 Kashmir Colony Rahwali Cantt <br>Gujranwala, Punjab 52230</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Phone</h6>
+                                <p class="mb-0">{{ contact_phone }}<br>
+                                    Monday - Saturday: 9:00 AM - 7:00 PM<br>
+                                    Friday: 10:00 AM - 1:00 PM<br>
+                                    Sunday: By Appointment Only<br>
+                                    Pakistan Standard Time (UTC+5)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Email</h6>
+                                <p class="mb-0">{{ contact_email }}<br>Support: support@visaconsultancy.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h5 class="mb-3">Office Hours</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">Monday - Friday: 9:00 AM - 6:00 PM</li>
+                        <li class="mb-2">Saturday: 10:00 AM - 2:00 PM</li>
+                        <li class="mb-2">Sunday: Closed</li>
+                        <li>Emergency support available 24/7 for active applications</li>
+                    </ul>
+                    
+                    <div class="mt-4">
+                        <h5>Follow Us</h5>
+                        <div class="d-flex">
+                            <a href="#" class="btn btn-outline-primary me-2">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-primary me-2">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-primary me-2">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-primary">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <h3 class="mb-4">Send Message</h3>
+                    <form method="POST" id="contactForm">
+                        {% csrf_token %}
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Full Name *</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject *</label>
+                            <select class="form-select" id="subject" name="subject" required>
+                                <option value="" selected disabled>Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="visa_consultation">Visa Consultation</option>
+                                <option value="application_status">Application Status</option>
+                                <option value="document_help">Document Assistance</option>
+                                <option value="appointment">Book Appointment</option>
+                                <option value="complaint">Complaint</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                            <label class="form-check-label" for="newsletter">
+                                Subscribe to our newsletter for updates and tips
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                    
+                    <div class="mt-3 text-center">
+                        <small class="text-muted">We'll respond within 24 hours during business days</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Map Section -->
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header bg-white">
+                <h4 class="mb-0"><i class="fas fa-map-marked-alt text-primary me-2"></i>Our Office Location</h4>
+            </div>
+            <div class="card-body p-0">
+                <div class="row g-0">
+                    <!-- Map Container -->
+                    <div class="col-lg-8">
+                        <div id="map" style="height: 450px; width: 100%;"></div>
+                    </div>
+                    
+                    <!-- Office Details -->
+                    <div class="col-lg-4">
+    <div class="office-details p-4" style="height: 450px; overflow-y: auto;">
+        <h5 class="mb-3"><i class="fas fa-map-marker-alt text-primary me-2"></i>Gujranwala Office</h5>
+        
+        <!-- Address - Compact -->
+        <div class="office-info mb-3">
+            <div class="d-flex mb-2">
+                <div class="me-2" style="min-width: 25px;">
+                    <i class="fas fa-map-marker-alt text-danger"></i>
+                </div>
+                <div>
+                    <p class="mb-0 small">
+                        <strong>Address:</strong><br>
+                        CB 181, Kashmir Colony<br>
+                        Rahwali Cantt, Gujranwala<br>
+                        Punjab, Pakistan
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Phone - Compact -->
+            <div class="d-flex mb-2">
+                <div class="me-2" style="min-width: 25px;">
+                    <i class="fas fa-phone text-primary"></i>
+                </div>
+                <div>
+                    <p class="mb-0 small">
+                        <strong>Phone:</strong><br>
+                        +92 334 4476332<br>
+                        033-44476332
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Hours - Compact -->
+            <div class="d-flex mb-2">
+                <div class="me-2" style="min-width: 25px;">
+                    <i class="fas fa-clock text-success"></i>
+                </div>
+                <div>
+                    <p class="mb-0 small">
+                        <strong>Hours:</strong><br>
+                        Mon-Sat: 9AM-7PM<br>
+                        Fri: 10AM-1PM<br>
+                        Sun: By Appointment
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Email - Compact -->
+            <div class="d-flex mb-2">
+                <div class="me-2" style="min-width: 25px;">
+                    <i class="fas fa-envelope text-warning"></i>
+                </div>
+                <div>
+                    <p class="mb-0 small">
+                        <strong>Email:</strong><br>
+                        info@gujranwalavisaconsultancy.com
+                    </p>
+                </div>
+            </div>
+            
+            <!-- How to Reach - Compact -->
+            <div class="d-flex mb-2">
+                <div class="me-2" style="min-width: 25px;">
+                    <i class="fas fa-directions text-info"></i>
+                </div>
+                <div>
+                    <p class="mb-0 small">
+                        <strong>How to Reach:</strong><br>
+                        Main GT Road, Near Gujranwala Cantt<br>
+                        5 min from Rahwali Cantt • Parking available
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Actions - 2 buttons only -->
+        <div class="mt-3 pt-2 border-top">
+            <div class="d-grid gap-2">
+                <a href="tel:+923344476332" class="btn btn-primary btn-sm">
+                    <i class="fas fa-phone me-1"></i> Call Now
+                </a>
+                <a href="https://maps.google.com/?q=32.1614,74.1883" target="_blank" class="btn btn-outline-primary btn-sm">
+                    <i class="fas fa-directions me-1"></i> Directions
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Simple validation
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    
+    if (!name || !email || !message) {
+        alert('Please fill in all required fields.');
+        return;
+    }
+    
+    // In production, this would be an AJAX call
+    alert('Thank you! Your message has been sent. We will contact you soon.');
+    this.reset();
+});
+</script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
+<script>
+// Gujranwala coordinates
+const GUJRANWALA_COORDS = [32.243405877610584, 74.14488045315136];
+
+// Initialize Leaflet Map
+function initMap() {
+    // Create map centered on Gujranwala
+    const map = L.map('map').setView(GUJRANWALA_COORDS, 15);
+    
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    
+    // Create custom icon
+    const customIcon = L.divIcon({
+        html: `<div style="
+            background-color: #0d6efd;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            animation: bounce 2s infinite;
+        ">
+            <i class="fas fa-map-marker-alt"></i>
+        </div>`,
+        className: 'custom-div-icon',
+        iconSize: [40, 40],
+        iconAnchor: [20, 40]
+    });
+    
+    // Add marker for Gujranwala office
+    const marker = L.marker(GUJRANWALA_COORDS, {
+        title: 'Visa Consultancy Gujranwala',
+        icon: customIcon,
+        riseOnHover: true
+    }).addTo(map);
+    
+    // Create detailed popup
+    const popupContent = `
+        <div class="leaflet-popup-content" style="min-width: 250px;">
+            <h5 class="text-primary mb-2">
+                <i class="fas fa-passport me-1"></i> Visa Consultancy Gujranwala
+            </h5>
+            <p class="mb-2">
+                <i class="fas fa-map-marker-alt text-danger me-1"></i>
+                <strong>Address:</strong><br>
+                CB181 Kashmir Colony Rahwali Cantt<br>
+                Gujranwala, Punjab 52230<br>
+                Pakistan
+            </p>
+            <hr class="my-2">
+            <p class="mb-2">
+                <i class="fas fa-phone text-primary me-1"></i>
+                <strong>Phone:</strong><br>
+                +92 334 4476332<br>
+            </p>
+            <hr class="my-2">
+            <p class="mb-2">
+                <i class="fas fa-clock text-success me-1"></i>
+                <strong>Hours:</strong><br>
+                Monday - Saturday: 9:00 AM - 7:00 PM
+                Friday: 10:00 AM - 1:00 PM
+                Sunday: By Appointment Only
+                Pakistan Standard Time (UTC+5)
+            </p>
+            <div class="mt-3 d-flex gap-2">
+                <a href="tel:+923344476332" class="btn btn-sm btn-primary flex-fill">
+                    <i class="fas fa-phone me-1"></i> Call
+                </a>
+                <a href="https://maps.app.goo.gl/WCZJXFzSzocwy7Z38" 
+                   target="_blank" 
+                   class="btn btn-sm btn-success flex-fill">
+                    <i class="fas fa-directions me-1"></i> Directions
+                </a>
+            </div>
+        </div>
+    `;
+    
+    marker.bindPopup(popupContent, {
+        maxWidth: 300,
+        className: 'custom-popup'
+    }).openPopup();
+    
+    // Add a circle to highlight the area
+    L.circle(GUJRANWALA_COORDS, {
+        color: '#0d6efd',
+        fillColor: '#0d6efd',
+        fillOpacity: 0.1,
+        radius: 200
+    }).addTo(map);
+    
+    // Add scale control
+    L.control.scale({ imperial: false, metric: true }).addTo(map);
+    
+    // Add fullscreen control
+    map.addControl(new L.Control.Fullscreen());
+    
+    // Add locate control (show user's location)
+    L.control.locate({
+        position: 'bottomright',
+        strings: {
+            title: "Show my location"
+        },
+        locateOptions: {
+            maxZoom: 16
+        }
+    }).addTo(map);
+    
+    // Add layer control with different map styles
+    const baseLayers = {
+        "Street Map": L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }),
+        "Topographic": L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+            maxZoom: 17,
+            attribution: '© OpenTopoMap'
+        }),
+        "Satellite": L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: '© Esri'
+        })
+    };
+    
+    L.control.layers(baseLayers).addTo(map);
+    
+    // Add search control
+    const searchControl = new L.Control.Search({
+        position: 'topleft',
+        layer: L.layerGroup([marker]),
+        propertyName: 'title',
+        marker: false,
+        moveToLocation: function(latlng, title, map) {
+            map.flyTo(latlng, 16);
+        }
+    });
+    
+    map.addControl(searchControl);
+    
+    // Add some points of interest around Gujranwala
+    
+    // Add click event for share location button
+    document.getElementById('shareLocation').addEventListener('click', function() {
+        if (navigator.share) {
+            navigator.share({
+                title: 'Visa Consultancy Gujranwala',
+                text: 'Visit our visa consultancy office in Gujranwala',
+                url: window.location.href
+            });
+        } else {
+            // Fallback: Copy to clipboard
+            const tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            
+            alert('Link copied to clipboard!');
+        }
+    });
+}
+
+// Initialize map when page loads
+document.addEventListener('DOMContentLoaded', initMap);
+</script>
+
+<style>
+/* Leaflet Map Styles */
+#map {
+    border-radius: 0 0 0 5px;
+    z-index: 1;
+}
+
+.leaflet-popup-content {
+    padding: 12px;
+    font-size: 14px;
+}
+
+.leaflet-popup-content h5 {
+    color: #0d6efd;
+    margin-bottom: 12px;
+}
+
+.custom-popup .leaflet-popup-content-wrapper {
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    border: 2px solid #0d6efd;
+}
+
+.office-details {
+    border-left: 1px solid #dee2e6;
+}
+
+/* Animation for marker */
+@keyframes bounce {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-10px); 
+    }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    #map {
+        height: 350px;
+        border-radius: 0;
+    }
+    .office-details {
+        height: auto;
+        border-left: none;
+        border-top: 1px solid #dee2e6;
+    }
+}
+
+/* Office info styling */
+.office-info h6 {
+    color: #495057;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.office-info .text-muted {
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+/* Button styling */
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+</style>
+<style>
+/* Fix footer mixing issue */
+.office-details {
+    border-left: 1px solid #dee2e6;
+    background: white;
+}
+
+.office-details .small {
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+/* Ensure footer stays below */
+.footer {
+    clear: both;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 992px) {
+    .office-details {
+        height: auto !important;
+        max-height: 350px;
+        border-left: none;
+        border-top: 1px solid #dee2e6;
+    }
+}
+</style>
+{% endblock %}

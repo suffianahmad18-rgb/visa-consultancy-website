@@ -1,0 +1,454 @@
+<!-- templates/study_destinations/destination_detail.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ destination.country_name }} Study Guide - {{ site_name }}{% endblock %}
+
+{% block content %}
+<div class="study-destination-page">
+    <!-- Hero Banner -->
+    <div class="destination-banner position-relative">
+        {% if destination.banner_image %}
+        <img src="{{ destination.banner_image.url }}" 
+             alt="Study in {{ destination.country_name }}" 
+             class="img-fluid w-100"
+             style="height: 400px; object-fit: cover;">
+        {% endif %}
+        <div class="banner-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="bg-white p-4 rounded shadow-sm">
+                            <h1 class="display-5 mb-2">
+                                {{ destination.get_flag_emoji }} Study in {{ destination.country_name }}
+                            </h1>
+                            <p class="lead mb-0">{{ destination.intro_title }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container py-5">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'core:home' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'study_destinations:list' %}">Study Destinations</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ destination.country_name }}</li>
+            </ol>
+        </nav>
+        
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-8">
+                <!-- Quick Facts -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h3 class="mb-3"><i class="fas fa-bolt text-warning me-2"></i>Quick Facts</h3>
+                        <div class="row">
+                            {% if destination.quick_fact_1 %}
+                            <div class="col-md-6 mb-2">
+                                <i class="fas fa-check text-success me-2"></i>{{ destination.quick_fact_1 }}
+                            </div>
+                            {% endif %}
+                            {% if destination.quick_fact_2 %}
+                            <div class="col-md-6 mb-2">
+                                <i class="fas fa-check text-success me-2"></i>{{ destination.quick_fact_2 }}
+                            </div>
+                            {% endif %}
+                            {% if destination.quick_fact_3 %}
+                            <div class="col-md-6 mb-2">
+                                <i class="fas fa-check text-success me-2"></i>{{ destination.quick_fact_3 }}
+                            </div>
+                            {% endif %}
+                            {% if destination.quick_fact_4 %}
+                            <div class="col-md-6 mb-2">
+                                <i class="fas fa-check text-success me-2"></i>{{ destination.quick_fact_4 }}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Introduction -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h2 class="mb-3">About Studying in {{ destination.country_name }}</h2>
+                        <div class="destination-intro">
+                            {{ destination.intro_description|safe }}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dynamic Sections -->
+                {% if sections %}
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h2 class="mb-4">Guide to Studying in {{ destination.country_name }}</h2>
+                        <div class="accordion" id="destinationSections">
+                            {% for section in sections %}
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button {% if not forloop.first %}collapsed{% endif %}" 
+                                            type="button" 
+                                            data-bs-toggle="collapse" 
+                                            data-bs-target="#section{{ section.id }}">
+                                        <i class="fas {{ section.section_type|lower|slice:'0:4' }} me-2"></i>
+                                        {{ section.section_title }}
+                                    </button>
+                                </h3>
+                                <div id="section{{ section.id }}" 
+                                     class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" 
+                                     data-bs-parent="#destinationSections">
+                                    <div class="accordion-body">
+                                        {{ section.section_content|safe }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Tuition Fees Table -->
+                {% if tuition_fees %}
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h3 class="mb-4"><i class="fas fa-money-bill-wave text-success me-2"></i>Tuition Fees</h3>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Program</th>
+                                        <th>Level</th>
+                                        <th>Annual Fee (USD)</th>
+                                        <th>Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for fee in tuition_fees %}
+                                    <tr>
+                                        <td>{{ fee.program_name }}</td>
+                                        <td><span class="badge bg-info">{{ fee.get_program_level_display }}</span></td>
+                                        <td>${{ fee.tuition_fee_min }} - ${{ fee.tuition_fee_max }}</td>
+                                        <td>{{ fee.duration_years }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% if destination.country_code != 'USA' %}
+                        <div class="alert alert-info mt-3">
+                            <small>
+                                <i class="fas fa-info-circle me-1"></i>
+                                Fees are approximate and vary by university. Public universities are generally cheaper than private institutions.
+                            </small>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Intakes -->
+                {% if intakes %}
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h3 class="mb-4"><i class="fas fa-calendar-alt text-primary me-2"></i>Intake Seasons</h3>
+                        <div class="row">
+                            {% for intake in intakes %}
+                            <div class="col-md-6 mb-3">
+                                <div class="card {% if intake.is_main_intake %}border-primary{% endif %} h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            {{ intake.intake_name }}
+                                            {% if intake.is_main_intake %}
+                                            <span class="badge bg-primary">Main Intake</span>
+                                            {% endif %}
+                                        </h5>
+                                        <p class="card-text">
+                                            <strong>Intake Month:</strong> {{ intake.intake_month }}<br>
+                                            <strong>Application Deadline:</strong> {{ intake.application_deadline }}
+                                            {% if intake.visa_deadline %}
+                                            <br><strong>Visa Deadline:</strong> {{ intake.visa_deadline }}
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Scholarships -->
+                {% if scholarships %}
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h3 class="mb-4"><i class="fas fa-award text-warning me-2"></i>Scholarships</h3>
+                        <div class="row">
+                            {% for scholarship in scholarships %}
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ scholarship.scholarship_title }}</h5>
+                                        <span class="badge bg-info mb-2">{{ scholarship.get_scholarship_type_display }}</span>
+                                        <p class="card-text">
+                                            <strong>Amount:</strong> {{ scholarship.amount }}<br>
+                                            {% if scholarship.application_deadline %}
+                                            <strong>Deadline:</strong> {{ scholarship.application_deadline }}
+                                            {% endif %}
+                                        </p>
+                                        <div class="scholarship-eligibility">
+                                            {{ scholarship.eligibility|safe }}
+                                        </div>
+                                        {% if scholarship.website_link %}
+                                        <a href="{{ scholarship.website_link }}" target="_blank" class="btn btn-sm btn-outline-primary mt-2">
+                                            <i class="fas fa-external-link-alt me-1"></i> Official Website
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Visa Requirements -->
+                {% if visa_requirements %}
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h3 class="mb-4"><i class="fas fa-passport text-danger me-2"></i>Visa Requirements</h3>
+                        {% for visa in visa_requirements %}
+                        <div class="mb-4 {% if not forloop.last %}border-bottom pb-4{% endif %}">
+                            <h5>{{ visa.visa_name }}</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Type:</strong> {{ visa.get_visa_type_display }}</p>
+                                    <p><strong>Processing Time:</strong> {{ visa.processing_time }}</p>
+                                    <p><strong>Visa Fee:</strong> {{ visa.visa_fee }}</p>
+                                    {% if visa.financial_requirement %}
+                                    <p><strong>Financial Requirement:</strong> {{ visa.financial_requirement }}</p>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Documents Required:</h6>
+                                    {{ visa.documents_required|safe }}
+                                </div>
+                            </div>
+                            <h6>Eligibility Criteria:</h6>
+                            {{ visa.eligibility_criteria|safe }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Post-Study Work -->
+                {% if post_study_work %}
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h3 class="mb-4"><i class="fas fa-briefcase text-success me-2"></i>Post-Study Work Opportunities</h3>
+                        {% for psw in post_study_work %}
+                        <div class="mb-4 {% if not forloop.last %}border-bottom pb-4{% endif %}">
+                            <h5>{{ psw.visa_name }} ({{ psw.duration }})</h5>
+                            
+                            <h6>Eligibility:</h6>
+                            {{ psw.eligibility|safe }}
+                            
+                            <h6>Application Process:</h6>
+                            {{ psw.application_process|safe }}
+                            
+                            <h6>Work Rights:</h6>
+                            {{ psw.work_rights|safe }}
+                            
+                            {% if psw.pathway_to_pr %}
+                            <h6>Pathway to Permanent Residency:</h6>
+                            {{ psw.pathway_to_pr|safe }}
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- CTA Section -->
+<div class="card shadow bg-primary text-white mb-4">
+    <div class="card-body text-center p-4">
+        <h3 class="mb-3">Ready to Study in {{ destination.country_name }}?</h3>
+        <p class="mb-4">Get personalized guidance from our education experts</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="{% url 'core:contact' %}?destination={{ destination.country_name }}" 
+               class="btn btn-light">
+                <i class="fas fa-headset me-2"></i> Free Consultation
+            </a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'dashboard:application_create' %}?destination={{ destination.slug }}" 
+               class="btn btn-outline-light">
+                <i class="fas fa-paper-plane me-2"></i> Apply Now
+            </a>
+            {% else %}
+            <a href="{% url 'accounts:login' %}?next={{ request.path }}" 
+               class="btn btn-outline-light">
+                <i class="fas fa-sign-in-alt me-2"></i> Login to Apply
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Quick Navigation -->
+                <div class="card shadow-sm mb-4 sticky-top" style="top: 20px;">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0"><i class="fas fa-list me-2"></i>Page Navigation</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush">
+                            <a href="#introduction" class="list-group-item list-group-item-action">
+                                Introduction
+                            </a>
+                            {% for section in sections %}
+                            <a href="#section{{ section.id }}" class="list-group-item list-group-item-action">
+                                {{ section.section_title }}
+                            </a>
+                            {% endfor %}
+                            {% if tuition_fees %}
+                            <a href="#tuition" class="list-group-item list-group-item-action">
+                                Tuition Fees
+                            </a>
+                            {% endif %}
+                            {% if intakes %}
+                            <a href="#intakes" class="list-group-item list-group-item-action">
+                                Intake Seasons
+                            </a>
+                            {% endif %}
+                            {% if scholarships %}
+                            <a href="#scholarships" class="list-group-item list-group-item-action">
+                                Scholarships
+                            </a>
+                            {% endif %}
+                            {% if visa_requirements %}
+                            <a href="#visa" class="list-group-item list-group-item-action">
+                                Visa Requirements
+                            </a>
+                            {% endif %}
+                            {% if post_study_work %}
+                            <a href="#psw" class="list-group-item list-group-item-action">
+                                Post-Study Work
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Related Destinations -->
+                {% if related_destinations %}
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0"><i class="fas fa-globe-americas me-2"></i>Other Destinations</h5>
+                    </div>
+                    <div class="card-body">
+                        {% for related in related_destinations %}
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="me-3">
+                                <span style="font-size: 1.5rem;">{{ related.get_flag_emoji }}</span>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-0">{{ related.country_name }}</h6>
+                                <small class="text-muted">{{ related.get_country_code_display }}</small>
+                            </div>
+                            <a href="{{ related.get_absolute_url }}" class="btn btn-sm btn-outline-primary">
+                                View
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Consultation Card -->
+                <div class="card shadow-sm border-primary">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-3">Free Study Abroad Consultation</h5>
+                        <p class="card-text small mb-3">Get expert advice on universities, courses, and visa process</p>
+                        <a href="{% url 'core:contact' %}?destination={{ destination.country_name }}" 
+                           class="btn btn-primary w-100 mb-2">
+                            <i class="fas fa-calendar-check me-2"></i> Book Consultation
+                        </a>
+                        <a href="tel:{{ contact_phone }}" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-phone me-2"></i> Call Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.destination-banner {
+    position: relative;
+}
+
+.banner-overlay {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #e7f1ff;
+    color: #0d6efd;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: #0d6efd;
+}
+
+.table th {
+    font-weight: 600;
+}
+
+.badge {
+    font-size: 0.75em;
+}
+
+.sticky-top {
+    z-index: 100;
+}
+
+@media (max-width: 992px) {
+    .destination-banner img {
+        height: 300px !important;
+    }
+}
+</style>
+
+<script>
+// Smooth scrolling for navigation
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.list-group-item[href^="#"]');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

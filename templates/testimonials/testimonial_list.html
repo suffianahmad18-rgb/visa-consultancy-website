@@ -1,0 +1,171 @@
+<!-- templates/testimonials/testimonial_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Success Stories - {{ site_name }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-4 mb-3">Success Stories</h1>
+            <p class="lead">Hear from our successful clients who got their visas with our help</p>
+            <a href="{% url 'testimonials:study_visa_testimonials' %}" class="btn btn-primary">
+                <i class="fas fa-graduation-cap me-2"></i> View Study Visa Success Stories
+            </a>
+        </div>
+    </div>
+    
+    <!-- Filter Buttons -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="text-center">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-primary active" data-filter="all">All Visas</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter="STUDY_VISA">Study Visa</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter="WORK_VISA">Work Visa</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter="TOURIST_VISA">Tourist Visa</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter="IMMIGRATION">Immigration</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Testimonials Grid -->
+    <div class="row" id="testimonialsGrid">
+        {% for testimonial in testimonials %}
+        <div class="col-md-6 col-lg-4 mb-4" data-category="{{ testimonial.visa_category }}">
+            <div class="card h-100 shadow-sm border-0 testimonial-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        {% if testimonial.client_image %}
+                        <img src="{{ testimonial.client_image.url }}" 
+                             alt="{{ testimonial.client_name }}"
+                             class="rounded-circle me-3"
+                             style="width: 60px; height: 60px; object-fit: cover;">
+                        {% else %}
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3"
+                             style="width: 60px; height: 60px;">
+                            {{ testimonial.client_name|first|upper }}
+                        </div>
+                        {% endif %}
+                        <div>
+                            <h5 class="mb-0">{{ testimonial.client_name }}</h5>
+                            <p class="text-muted mb-0 small">
+                                <i class="fas fa-map-marker-alt me-1"></i>
+                                {{ testimonial.get_country_display }}
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <span class="badge bg-primary">{{ testimonial.get_visa_category_display }}</span>
+                        {% if testimonial.university %}
+                        <span class="badge bg-info">{{ testimonial.university }}</span>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="rating mb-3 text-warning">
+                        {{ testimonial.stars|safe }}
+                    </div>
+                    
+                    <p class="testimonial-text">{{ testimonial.testimonial_text|truncatewords:40 }}</p>
+                    
+                    {% if testimonial.university %}
+                    <p class="small text-muted mb-2">
+                        <i class="fas fa-university me-1"></i>
+                        {{ testimonial.university }}
+                        {% if testimonial.course %}
+                        - {{ testimonial.course }}
+                        {% endif %}
+                    </p>
+                    {% endif %}
+                    
+                    {% if testimonial.is_featured %}
+                    <span class="badge bg-success">
+                        <i class="fas fa-star me-1"></i> Featured Success
+                    </span>
+                    {% endif %}
+                </div>
+                <div class="card-footer bg-white border-0">
+                    <small class="text-muted">
+                        <i class="far fa-clock me-1"></i>
+                        {{ testimonial.created_at|date:"M Y" }}
+                    </small>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center py-5">
+            <i class="fas fa-comments fa-3x text-muted mb-3"></i>
+            <h3>No Testimonials Yet</h3>
+            <p class="text-muted">Be the first to share your success story!</p>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- CTA Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card shadow bg-primary text-white">
+                <div class="card-body text-center p-5">
+                    <h2 class="mb-4">Share Your Success Story</h2>
+                    <p class="lead mb-4">Got your visa with our help? Share your experience to inspire others!</p>
+                    <a href="{% url 'core:contact' %}?subject=testimonial" class="btn btn-light btn-lg">
+                        <i class="fas fa-share-alt me-2"></i> Share Your Story
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Filter testimonials by category
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            const filter = this.getAttribute('data-filter');
+            
+            // Filter cards
+            testimonialCards.forEach(card => {
+                const category = card.closest('[data-category]').getAttribute('data-category');
+                
+                if (filter === 'all' || category === filter) {
+                    card.closest('.col-md-6').style.display = 'block';
+                } else {
+                    card.closest('.col-md-6').style.display = 'none';
+                }
+            });
+        });
+    });
+});
+</script>
+
+<style>
+.testimonial-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+.rating {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.testimonial-text {
+    font-style: italic;
+    line-height: 1.6;
+}
+</style>
+{% endblock %}
