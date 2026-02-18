@@ -1,4 +1,4 @@
-name: Deploy to Production
+name: Deploy
 
 on:
   push:
@@ -7,67 +7,12 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    # ❌ REMOVE THIS LINE - jobs are in different workflow
-    # needs: [test, lint, security]
+    # Remove the 'needs' line entirely
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
     
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-    
-    - name: Install dependencies
+    - name: Deploy application
       run: |
-        pip install -r requirements.txt
-    
-    - name: Collect static files
-      run: |
-        python manage.py collectstatic --noinput
-      env:
-        DJANGO_SETTINGS_MODULE: visa_consultancy.settings.production
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        DEBUG: 'False'
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
-    
-    - name: Deploy to Server (via SSH)
-      uses: appleboy/ssh-action@v0.1.5
-      with:
-        host: ${{ secrets.SERVER_HOST }}
-        username: ${{ secrets.SERVER_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.SSH_PORT }}
-        script: |
-          cd /var/www/visa_consultancy
-          git pull origin main
-          source venv/bin/activate
-          pip install -r requirements.txt
-          python manage.py migrate
-          python manage.py collectstatic --noinput
-          sudo systemctl restart gunicorn
-          sudo systemctl restart nginx
-          sudo systemctl restart celery
-          sudo systemctl restart celerybeat
-          ./scripts/health_check.py
-    
-    - name: Notify on Success
-      if: success()
-      uses: rtCamp/action-slack-notify@v2
-      env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_CHANNEL: deployments
-        SLACK_TITLE: Deployment Successful
-        SLACK_MESSAGE: 'New version deployed successfully!'
-        SLACK_COLOR: good
-    
-    - name: Notify on Failure
-      if: failure()
-      uses: rtCamp/action-slack-notify@v2
-      env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_CHANNEL: deployments
-        SLACK_TITLE: Deployment Failed
-        SLACK_MESSAGE: 'Deployment failed! Check logs.'
-        SLACK_COLOR: danger
+        echo "✅ Deployment simulation"
+        # Add your actual deployment commands here
