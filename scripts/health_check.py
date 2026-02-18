@@ -3,10 +3,12 @@
 
 import os
 import sys
-import requests
+
 import django
-from django.db import connection
+import requests
 from django.core.management import call_command
+from django.db import connection
+
 
 def check_database():
     """Check database connection."""
@@ -18,10 +20,12 @@ def check_database():
         print(f"❌ Database: {str(e)}")
         return False
 
+
 def check_migrations():
     """Check if all migrations are applied."""
     try:
         from django.db.migrations.executor import MigrationExecutor
+
         executor = MigrationExecutor(connection)
         plan = executor.migration_plan(executor.loader.graph.leaf_nodes())
         if not plan:
@@ -34,9 +38,11 @@ def check_migrations():
         print(f"❌ Migrations: {str(e)}")
         return False
 
+
 def check_static_files():
     """Check if static files exist."""
     from django.conf import settings
+
     static_root = settings.STATIC_ROOT
     if os.path.exists(static_root) and os.listdir(static_root):
         print(f"✅ Static files: Found in {static_root}")
@@ -45,15 +51,17 @@ def check_static_files():
         print(f"❌ Static files: Missing in {static_root}")
         return False
 
+
 def check_media_files():
     """Check if media directory is writable."""
     from django.conf import settings
+
     media_root = settings.MEDIA_ROOT
     if os.path.exists(media_root):
-        test_file = os.path.join(media_root, 'health_check.txt')
+        test_file = os.path.join(media_root, "health_check.txt")
         try:
-            with open(test_file, 'w') as f:
-                f.write('health check')
+            with open(test_file, "w") as f:
+                f.write("health check")
             os.remove(test_file)
             print(f"✅ Media directory: Writable at {media_root}")
             return True
@@ -64,9 +72,10 @@ def check_media_files():
         print(f"❌ Media directory: Missing at {media_root}")
         return False
 
+
 def check_http_endpoint():
     """Check if website is accessible."""
-    base_url = os.getenv('BASE_URL', 'http://localhost:8000')
+    base_url = os.getenv("BASE_URL", "http://localhost:8000")
     try:
         response = requests.get(f"{base_url}/", timeout=10)
         if response.status_code == 200:
@@ -79,9 +88,11 @@ def check_http_endpoint():
         print(f"❌ HTTP: {str(e)}")
         return False
 
+
 def check_disk_space():
     """Check available disk space."""
     import shutil
+
     total, used, free = shutil.disk_usage("/")
     free_gb = free // (2**30)
     if free_gb > 5:
@@ -91,9 +102,11 @@ def check_disk_space():
         print(f"❌ Disk space: Only {free_gb}GB free")
         return False
 
+
 def check_memory():
     """Check available memory."""
     import psutil
+
     memory = psutil.virtual_memory()
     if memory.available > 500 * 1024 * 1024:  # 500MB
         print(f"✅ Memory: {memory.available / (1024**2):.0f}MB available")
@@ -102,16 +115,17 @@ def check_memory():
         print(f"❌ Memory: Only {memory.available / (1024**2):.0f}MB available")
         return False
 
+
 def main():
     """Run all health checks."""
-    print("\n" + "="*50)
+    print("\n" + "=" * 50)
     print("HEALTH CHECK REPORT")
-    print("="*50 + "\n")
-    
+    print("=" * 50 + "\n")
+
     # Setup Django
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'visa_consultancy.settings')
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "visa_consultancy.settings")
     django.setup()
-    
+
     checks = [
         ("Database Connection", check_database),
         ("Migrations Status", check_migrations),
@@ -121,22 +135,23 @@ def main():
         ("Disk Space", check_disk_space),
         ("Memory", check_memory),
     ]
-    
+
     results = []
     for name, check_func in checks:
         print(f"\n--- {name} ---")
         results.append(check_func())
-    
-    print("\n" + "="*50)
+
+    print("\n" + "=" * 50)
     total_passed = sum(results)
     total_checks = len(checks)
-    
+
     if total_passed == total_checks:
         print(f"\n✅ ALL CHECKS PASSED ({total_passed}/{total_checks})")
         return 0
     else:
         print(f"\n❌ {total_passed}/{total_checks} checks passed")
         return 1
+
 
 if __name__ == "__main__":
     sys.exit(main())

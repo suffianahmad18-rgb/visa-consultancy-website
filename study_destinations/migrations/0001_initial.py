@@ -9,143 +9,403 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='StudyDestination',
+            name="StudyDestination",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('country_name', models.CharField(max_length=100)),
-                ('country_code', models.CharField(choices=[('UK', 'United Kingdom'), ('USA', 'United States'), ('CANADA', 'Canada'), ('AUSTRALIA', 'Australia'), ('GERMANY', 'Germany'), ('FRANCE', 'France'), ('NETHERLANDS', 'Netherlands'), ('IRELAND', 'Ireland'), ('NEW_ZEALAND', 'New Zealand'), ('OTHER', 'Other')], default='OTHER', max_length=20)),
-                ('slug', models.SlugField(max_length=100, unique=True)),
-                ('banner_image', models.ImageField(upload_to='study_destinations/banners/')),
-                ('intro_title', models.CharField(max_length=200)),
-                ('intro_description', ckeditor.fields.RichTextField()),
-                ('quick_fact_1', models.CharField(blank=True, max_length=100)),
-                ('quick_fact_2', models.CharField(blank=True, max_length=100)),
-                ('quick_fact_3', models.CharField(blank=True, max_length=100)),
-                ('quick_fact_4', models.CharField(blank=True, max_length=100)),
-                ('meta_title', models.CharField(blank=True, max_length=200)),
-                ('meta_description', models.TextField(blank=True)),
-                ('is_published', models.BooleanField(default=True)),
-                ('is_featured', models.BooleanField(default=False)),
-                ('order', models.IntegerField(default=0, help_text='Lower number appears first')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("country_name", models.CharField(max_length=100)),
+                (
+                    "country_code",
+                    models.CharField(
+                        choices=[
+                            ("UK", "United Kingdom"),
+                            ("USA", "United States"),
+                            ("CANADA", "Canada"),
+                            ("AUSTRALIA", "Australia"),
+                            ("GERMANY", "Germany"),
+                            ("FRANCE", "France"),
+                            ("NETHERLANDS", "Netherlands"),
+                            ("IRELAND", "Ireland"),
+                            ("NEW_ZEALAND", "New Zealand"),
+                            ("OTHER", "Other"),
+                        ],
+                        default="OTHER",
+                        max_length=20,
+                    ),
+                ),
+                ("slug", models.SlugField(max_length=100, unique=True)),
+                (
+                    "banner_image",
+                    models.ImageField(upload_to="study_destinations/banners/"),
+                ),
+                ("intro_title", models.CharField(max_length=200)),
+                ("intro_description", ckeditor.fields.RichTextField()),
+                ("quick_fact_1", models.CharField(blank=True, max_length=100)),
+                ("quick_fact_2", models.CharField(blank=True, max_length=100)),
+                ("quick_fact_3", models.CharField(blank=True, max_length=100)),
+                ("quick_fact_4", models.CharField(blank=True, max_length=100)),
+                ("meta_title", models.CharField(blank=True, max_length=200)),
+                ("meta_description", models.TextField(blank=True)),
+                ("is_published", models.BooleanField(default=True)),
+                ("is_featured", models.BooleanField(default=False)),
+                (
+                    "order",
+                    models.IntegerField(
+                        default=0, help_text="Lower number appears first"
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
             ],
             options={
-                'verbose_name': 'Study Destination',
-                'verbose_name_plural': 'Study Destinations',
-                'ordering': ['order', 'country_name'],
+                "verbose_name": "Study Destination",
+                "verbose_name_plural": "Study Destinations",
+                "ordering": ["order", "country_name"],
             },
         ),
         migrations.CreateModel(
-            name='Scholarship',
+            name="Scholarship",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('scholarship_title', models.CharField(max_length=200)),
-                ('scholarship_type', models.CharField(choices=[('MERIT', 'Merit-based'), ('NEED', 'Need-based'), ('GOVERNMENT', 'Government Scholarship'), ('UNIVERSITY', 'University Scholarship'), ('EXTERNAL', 'External/Private'), ('SPORTS', 'Sports Scholarship'), ('RESEARCH', 'Research Grant')], default='MERIT', max_length=50)),
-                ('amount', models.CharField(help_text='e.g., $10,000, Full Tuition, 50% off', max_length=200)),
-                ('eligibility', ckeditor.fields.RichTextField()),
-                ('application_deadline', models.CharField(blank=True, max_length=100)),
-                ('website_link', models.URLField(blank=True)),
-                ('is_active', models.BooleanField(default=True)),
-                ('order', models.IntegerField(default=0)),
-                ('destination', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='scholarships', to='study_destinations.studydestination')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("scholarship_title", models.CharField(max_length=200)),
+                (
+                    "scholarship_type",
+                    models.CharField(
+                        choices=[
+                            ("MERIT", "Merit-based"),
+                            ("NEED", "Need-based"),
+                            ("GOVERNMENT", "Government Scholarship"),
+                            ("UNIVERSITY", "University Scholarship"),
+                            ("EXTERNAL", "External/Private"),
+                            ("SPORTS", "Sports Scholarship"),
+                            ("RESEARCH", "Research Grant"),
+                        ],
+                        default="MERIT",
+                        max_length=50,
+                    ),
+                ),
+                (
+                    "amount",
+                    models.CharField(
+                        help_text="e.g., $10,000, Full Tuition, 50% off", max_length=200
+                    ),
+                ),
+                ("eligibility", ckeditor.fields.RichTextField()),
+                ("application_deadline", models.CharField(blank=True, max_length=100)),
+                ("website_link", models.URLField(blank=True)),
+                ("is_active", models.BooleanField(default=True)),
+                ("order", models.IntegerField(default=0)),
+                (
+                    "destination",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="scholarships",
+                        to="study_destinations.studydestination",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['order', 'scholarship_title'],
+                "ordering": ["order", "scholarship_title"],
             },
         ),
         migrations.CreateModel(
-            name='PostStudyWork',
+            name="PostStudyWork",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('visa_name', models.CharField(help_text='e.g., Post-Study Work Visa (PSW)', max_length=200)),
-                ('duration', models.CharField(help_text='e.g., 2 years, 3 years', max_length=100)),
-                ('eligibility', ckeditor.fields.RichTextField(help_text='Who can apply?')),
-                ('application_process', ckeditor.fields.RichTextField()),
-                ('work_rights', ckeditor.fields.RichTextField(help_text='What type of work is allowed?')),
-                ('pathway_to_pr', ckeditor.fields.RichTextField(blank=True, help_text='Pathway to Permanent Residency')),
-                ('order', models.IntegerField(default=0)),
-                ('destination', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='post_study_work', to='study_destinations.studydestination')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "visa_name",
+                    models.CharField(
+                        help_text="e.g., Post-Study Work Visa (PSW)", max_length=200
+                    ),
+                ),
+                (
+                    "duration",
+                    models.CharField(
+                        help_text="e.g., 2 years, 3 years", max_length=100
+                    ),
+                ),
+                (
+                    "eligibility",
+                    ckeditor.fields.RichTextField(help_text="Who can apply?"),
+                ),
+                ("application_process", ckeditor.fields.RichTextField()),
+                (
+                    "work_rights",
+                    ckeditor.fields.RichTextField(
+                        help_text="What type of work is allowed?"
+                    ),
+                ),
+                (
+                    "pathway_to_pr",
+                    ckeditor.fields.RichTextField(
+                        blank=True, help_text="Pathway to Permanent Residency"
+                    ),
+                ),
+                ("order", models.IntegerField(default=0)),
+                (
+                    "destination",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="post_study_work",
+                        to="study_destinations.studydestination",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Post-Study Work Option',
-                'verbose_name_plural': 'Post-Study Work Options',
-                'ordering': ['order'],
+                "verbose_name": "Post-Study Work Option",
+                "verbose_name_plural": "Post-Study Work Options",
+                "ordering": ["order"],
             },
         ),
         migrations.CreateModel(
-            name='IntakeTable',
+            name="IntakeTable",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('intake_name', models.CharField(max_length=100)),
-                ('intake_month', models.CharField(help_text='e.g., September, January, May', max_length=50)),
-                ('application_deadline', models.CharField(help_text='e.g., 3-6 months before intake', max_length=100)),
-                ('visa_deadline', models.CharField(blank=True, help_text='Latest visa application date', max_length=100)),
-                ('is_main_intake', models.BooleanField(default=False)),
-                ('order', models.IntegerField(default=0)),
-                ('destination', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='intakes', to='study_destinations.studydestination')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("intake_name", models.CharField(max_length=100)),
+                (
+                    "intake_month",
+                    models.CharField(
+                        help_text="e.g., September, January, May", max_length=50
+                    ),
+                ),
+                (
+                    "application_deadline",
+                    models.CharField(
+                        help_text="e.g., 3-6 months before intake", max_length=100
+                    ),
+                ),
+                (
+                    "visa_deadline",
+                    models.CharField(
+                        blank=True,
+                        help_text="Latest visa application date",
+                        max_length=100,
+                    ),
+                ),
+                ("is_main_intake", models.BooleanField(default=False)),
+                ("order", models.IntegerField(default=0)),
+                (
+                    "destination",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="intakes",
+                        to="study_destinations.studydestination",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['order', 'intake_name'],
+                "ordering": ["order", "intake_name"],
             },
         ),
         migrations.CreateModel(
-            name='DestinationSection',
+            name="DestinationSection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('section_title', models.CharField(max_length=200)),
-                ('section_type', models.CharField(choices=[('WHY_STUDY', 'Why Study Here'), ('EDUCATION_SYSTEM', 'Education System'), ('COST_LIVING', 'Cost of Living'), ('ACCOMMODATION', 'Accommodation'), ('WORK_RIGHTS', 'Work Rights'), ('HEALTHCARE', 'Healthcare System'), ('CULTURE', 'Culture & Lifestyle'), ('ADMISSION_PROCESS', 'Admission Process'), ('LANGUAGE', 'Language Requirements'), ('OTHER', 'Other')], default='OTHER', max_length=50)),
-                ('section_content', ckeditor.fields.RichTextField()),
-                ('order', models.IntegerField(default=0)),
-                ('is_active', models.BooleanField(default=True)),
-                ('destination', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='sections', to='study_destinations.studydestination')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("section_title", models.CharField(max_length=200)),
+                (
+                    "section_type",
+                    models.CharField(
+                        choices=[
+                            ("WHY_STUDY", "Why Study Here"),
+                            ("EDUCATION_SYSTEM", "Education System"),
+                            ("COST_LIVING", "Cost of Living"),
+                            ("ACCOMMODATION", "Accommodation"),
+                            ("WORK_RIGHTS", "Work Rights"),
+                            ("HEALTHCARE", "Healthcare System"),
+                            ("CULTURE", "Culture & Lifestyle"),
+                            ("ADMISSION_PROCESS", "Admission Process"),
+                            ("LANGUAGE", "Language Requirements"),
+                            ("OTHER", "Other"),
+                        ],
+                        default="OTHER",
+                        max_length=50,
+                    ),
+                ),
+                ("section_content", ckeditor.fields.RichTextField()),
+                ("order", models.IntegerField(default=0)),
+                ("is_active", models.BooleanField(default=True)),
+                (
+                    "destination",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="sections",
+                        to="study_destinations.studydestination",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['order', 'section_title'],
+                "ordering": ["order", "section_title"],
             },
         ),
         migrations.CreateModel(
-            name='TuitionTable',
+            name="TuitionTable",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('program_name', models.CharField(max_length=200)),
-                ('program_level', models.CharField(choices=[('UNDERGRADUATE', 'Undergraduate'), ('POSTGRADUATE', 'Postgraduate'), ('PHD', 'PhD/Doctoral'), ('DIPLOMA', 'Diploma'), ('FOUNDATION', 'Foundation Program'), ('LANGUAGE', 'Language Course')], default='UNDERGRADUATE', max_length=50)),
-                ('tuition_fee_min', models.DecimalField(decimal_places=2, help_text='Minimum annual fee in USD', max_digits=10)),
-                ('tuition_fee_max', models.DecimalField(decimal_places=2, help_text='Maximum annual fee in USD', max_digits=10)),
-                ('duration_years', models.CharField(help_text='e.g., 3-4 years, 1-2 years', max_length=50)),
-                ('notes', models.TextField(blank=True)),
-                ('order', models.IntegerField(default=0)),
-                ('destination', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='tuition_fees', to='study_destinations.studydestination')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("program_name", models.CharField(max_length=200)),
+                (
+                    "program_level",
+                    models.CharField(
+                        choices=[
+                            ("UNDERGRADUATE", "Undergraduate"),
+                            ("POSTGRADUATE", "Postgraduate"),
+                            ("PHD", "PhD/Doctoral"),
+                            ("DIPLOMA", "Diploma"),
+                            ("FOUNDATION", "Foundation Program"),
+                            ("LANGUAGE", "Language Course"),
+                        ],
+                        default="UNDERGRADUATE",
+                        max_length=50,
+                    ),
+                ),
+                (
+                    "tuition_fee_min",
+                    models.DecimalField(
+                        decimal_places=2,
+                        help_text="Minimum annual fee in USD",
+                        max_digits=10,
+                    ),
+                ),
+                (
+                    "tuition_fee_max",
+                    models.DecimalField(
+                        decimal_places=2,
+                        help_text="Maximum annual fee in USD",
+                        max_digits=10,
+                    ),
+                ),
+                (
+                    "duration_years",
+                    models.CharField(
+                        help_text="e.g., 3-4 years, 1-2 years", max_length=50
+                    ),
+                ),
+                ("notes", models.TextField(blank=True)),
+                ("order", models.IntegerField(default=0)),
+                (
+                    "destination",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="tuition_fees",
+                        to="study_destinations.studydestination",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Tuition Fee',
-                'verbose_name_plural': 'Tuition Fees',
-                'ordering': ['order', 'program_level', 'program_name'],
+                "verbose_name": "Tuition Fee",
+                "verbose_name_plural": "Tuition Fees",
+                "ordering": ["order", "program_level", "program_name"],
             },
         ),
         migrations.CreateModel(
-            name='VisaRequirement',
+            name="VisaRequirement",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('visa_type', models.CharField(choices=[('STUDENT', 'Student Visa'), ('WORK_PERMIT', 'Work Permit'), ('POST_STUDY', 'Post-Study Work Visa'), ('TOURIST', 'Tourist Visa'), ('DEPENDENT', 'Dependent Visa')], default='STUDENT', max_length=50)),
-                ('visa_name', models.CharField(help_text='e.g., Tier 4 (General) Student Visa', max_length=200)),
-                ('processing_time', models.CharField(help_text='e.g., 3-8 weeks', max_length=100)),
-                ('visa_fee', models.CharField(help_text='e.g., $350', max_length=100)),
-                ('financial_requirement', models.CharField(help_text='e.g., Proof of $15,000 minimum', max_length=200)),
-                ('documents_required', ckeditor.fields.RichTextField()),
-                ('eligibility_criteria', ckeditor.fields.RichTextField()),
-                ('order', models.IntegerField(default=0)),
-                ('destination', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='visa_requirements', to='study_destinations.studydestination')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "visa_type",
+                    models.CharField(
+                        choices=[
+                            ("STUDENT", "Student Visa"),
+                            ("WORK_PERMIT", "Work Permit"),
+                            ("POST_STUDY", "Post-Study Work Visa"),
+                            ("TOURIST", "Tourist Visa"),
+                            ("DEPENDENT", "Dependent Visa"),
+                        ],
+                        default="STUDENT",
+                        max_length=50,
+                    ),
+                ),
+                (
+                    "visa_name",
+                    models.CharField(
+                        help_text="e.g., Tier 4 (General) Student Visa", max_length=200
+                    ),
+                ),
+                (
+                    "processing_time",
+                    models.CharField(help_text="e.g., 3-8 weeks", max_length=100),
+                ),
+                ("visa_fee", models.CharField(help_text="e.g., $350", max_length=100)),
+                (
+                    "financial_requirement",
+                    models.CharField(
+                        help_text="e.g., Proof of $15,000 minimum", max_length=200
+                    ),
+                ),
+                ("documents_required", ckeditor.fields.RichTextField()),
+                ("eligibility_criteria", ckeditor.fields.RichTextField()),
+                ("order", models.IntegerField(default=0)),
+                (
+                    "destination",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="visa_requirements",
+                        to="study_destinations.studydestination",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Visa Requirement',
-                'verbose_name_plural': 'Visa Requirements',
-                'ordering': ['order', 'visa_type'],
+                "verbose_name": "Visa Requirement",
+                "verbose_name_plural": "Visa Requirements",
+                "ordering": ["order", "visa_type"],
             },
         ),
     ]

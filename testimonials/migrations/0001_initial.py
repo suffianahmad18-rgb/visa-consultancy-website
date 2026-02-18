@@ -7,30 +7,67 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Testimonial',
+            name="Testimonial",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('client_name', models.CharField(max_length=200)),
-                ('client_image', models.ImageField(blank=True, null=True, upload_to='testimonials/')),
-                ('country', models.CharField(choices=[('USA', 'United States'), ('UK', 'United Kingdom'), ('CANADA', 'Canada'), ('AUSTRALIA', 'Australia'), ('GERMANY', 'Germany'), ('FRANCE', 'France'), ('JAPAN', 'Japan'), ('SINGAPORE', 'Singapore'), ('UAE', 'United Arab Emirates'), ('OTHER', 'Other')], max_length=50)),
-                ('visa_category', models.CharField(choices=[('STUDY_VISA', 'Study Visa')], max_length=50)),
-                ('university', models.CharField(blank=True, max_length=200)),
-                ('course', models.CharField(blank=True, max_length=200)),
-                ('testimonial_text', models.TextField()),
-                ('rating', models.IntegerField(choices=[(1, 1), (2, 2), (3, 3), (4, 4), (5, 5)])),
-                ('is_approved', models.BooleanField(default=False)),
-                ('is_featured', models.BooleanField(default=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("client_name", models.CharField(max_length=200)),
+                (
+                    "client_image",
+                    models.ImageField(blank=True, null=True, upload_to="testimonials/"),
+                ),
+                (
+                    "country",
+                    models.CharField(
+                        choices=[
+                            ("USA", "United States"),
+                            ("UK", "United Kingdom"),
+                            ("CANADA", "Canada"),
+                            ("AUSTRALIA", "Australia"),
+                            ("GERMANY", "Germany"),
+                            ("FRANCE", "France"),
+                            ("JAPAN", "Japan"),
+                            ("SINGAPORE", "Singapore"),
+                            ("UAE", "United Arab Emirates"),
+                            ("OTHER", "Other"),
+                        ],
+                        max_length=50,
+                    ),
+                ),
+                (
+                    "visa_category",
+                    models.CharField(
+                        choices=[("STUDY_VISA", "Study Visa")], max_length=50
+                    ),
+                ),
+                ("university", models.CharField(blank=True, max_length=200)),
+                ("course", models.CharField(blank=True, max_length=200)),
+                ("testimonial_text", models.TextField()),
+                (
+                    "rating",
+                    models.IntegerField(
+                        choices=[(1, 1), (2, 2), (3, 3), (4, 4), (5, 5)]
+                    ),
+                ),
+                ("is_approved", models.BooleanField(default=False)),
+                ("is_featured", models.BooleanField(default=False)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'verbose_name': 'Testimonial',
-                'verbose_name_plural': 'Testimonials',
-                'ordering': ['-created_at'],
+                "verbose_name": "Testimonial",
+                "verbose_name_plural": "Testimonials",
+                "ordering": ["-created_at"],
             },
         ),
     ]

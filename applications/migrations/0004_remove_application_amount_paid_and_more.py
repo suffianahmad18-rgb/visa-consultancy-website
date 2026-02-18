@@ -6,28 +6,31 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('applications', '0003_application_amount_paid_application_completion_year_and_more'),
+        (
+            "applications",
+            "0003_application_amount_paid_application_completion_year_and_more",
+        ),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='application',
-            name='amount_paid',
+            model_name="application",
+            name="amount_paid",
         ),
         migrations.RemoveField(
-            model_name='application',
-            name='intended_arrival_date',
+            model_name="application",
+            name="intended_arrival_date",
         ),
         migrations.RemoveField(
-            model_name='application',
-            name='intended_departure_date',
+            model_name="application",
+            name="intended_departure_date",
         ),
         migrations.RemoveField(
-            model_name='application',
-            name='purpose_of_travel',
+            model_name="application",
+            name="purpose_of_travel",
         ),
         migrations.RemoveField(
-            model_name='application',
-            name='total_amount',
+            model_name="application",
+            name="total_amount",
         ),
     ]

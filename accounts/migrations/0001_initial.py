@@ -15,32 +15,68 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='ClientProfile',
+            name="ClientProfile",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('phone', models.CharField(max_length=20)),
-                ('address', models.TextField()),
-                ('passport_number', models.CharField(blank=True, max_length=50)),
-                ('date_of_birth', models.DateField(blank=True, null=True)),
-                ('country', models.CharField(max_length=100)),
-                ('profile_image', models.ImageField(blank=True, upload_to='client_profiles/')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='client_profile', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("phone", models.CharField(max_length=20)),
+                ("address", models.TextField()),
+                ("passport_number", models.CharField(blank=True, max_length=50)),
+                ("date_of_birth", models.DateField(blank=True, null=True)),
+                ("country", models.CharField(max_length=100)),
+                (
+                    "profile_image",
+                    models.ImageField(blank=True, upload_to="client_profiles/"),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="client_profile",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='StaffProfile',
+            name="StaffProfile",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('phone', models.CharField(max_length=20)),
-                ('department', models.CharField(max_length=100)),
-                ('designation', models.CharField(max_length=100)),
-                ('is_agent', models.BooleanField(default=True)),
-                ('profile_image', models.ImageField(blank=True, upload_to='staff_profiles/')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='staff_profile', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("phone", models.CharField(max_length=20)),
+                ("department", models.CharField(max_length=100)),
+                ("designation", models.CharField(max_length=100)),
+                ("is_agent", models.BooleanField(default=True)),
+                (
+                    "profile_image",
+                    models.ImageField(blank=True, upload_to="staff_profiles/"),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="staff_profile",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

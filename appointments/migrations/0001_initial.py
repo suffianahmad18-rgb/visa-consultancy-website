@@ -15,20 +15,67 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Appointment',
+            name="Appointment",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('appointment_type', models.CharField(choices=[('CONSULTATION', 'Consultation'), ('DOCUMENT_SUBMISSION', 'Document Submission'), ('FOLLOW_UP', 'Follow-up'), ('INTERVIEW_PREP', 'Interview Preparation')], max_length=50)),
-                ('scheduled_date', models.DateTimeField()),
-                ('duration_minutes', models.IntegerField(default=30)),
-                ('status', models.CharField(choices=[('SCHEDULED', 'Scheduled'), ('CONFIRMED', 'Confirmed'), ('COMPLETED', 'Completed'), ('CANCELLED', 'Cancelled'), ('NO_SHOW', 'No Show')], default='SCHEDULED', max_length=20)),
-                ('purpose', models.TextField()),
-                ('meeting_link', models.URLField(blank=True)),
-                ('notes', models.TextField(blank=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('client', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='client_appointments', to=settings.AUTH_USER_MODEL)),
-                ('staff', models.ForeignKey(limit_choices_to={'is_staff': True}, on_delete=django.db.models.deletion.CASCADE, related_name='staff_appointments', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "appointment_type",
+                    models.CharField(
+                        choices=[
+                            ("CONSULTATION", "Consultation"),
+                            ("DOCUMENT_SUBMISSION", "Document Submission"),
+                            ("FOLLOW_UP", "Follow-up"),
+                            ("INTERVIEW_PREP", "Interview Preparation"),
+                        ],
+                        max_length=50,
+                    ),
+                ),
+                ("scheduled_date", models.DateTimeField()),
+                ("duration_minutes", models.IntegerField(default=30)),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("SCHEDULED", "Scheduled"),
+                            ("CONFIRMED", "Confirmed"),
+                            ("COMPLETED", "Completed"),
+                            ("CANCELLED", "Cancelled"),
+                            ("NO_SHOW", "No Show"),
+                        ],
+                        default="SCHEDULED",
+                        max_length=20,
+                    ),
+                ),
+                ("purpose", models.TextField()),
+                ("meeting_link", models.URLField(blank=True)),
+                ("notes", models.TextField(blank=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "client",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="client_appointments",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "staff",
+                    models.ForeignKey(
+                        limit_choices_to={"is_staff": True},
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="staff_appointments",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]
