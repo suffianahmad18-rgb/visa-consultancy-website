@@ -1,0 +1,18 @@
+# Created by pytest automatically.
+# Render deployment
+Dockerfile
+docker-compose.yml
+nginx.conf
+scripts/
+.github/workflows/
+
+# Old apps
+visas/
+visas_old/
+
+# Local files
+media/
+staticfiles/
+*.log
+*.pid
+*.sqlite3

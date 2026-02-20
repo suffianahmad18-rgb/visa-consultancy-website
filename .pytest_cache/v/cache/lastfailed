@@ -1,0 +1,4 @@
+{
+  "tests/test_forms.py::TestUserRegistrationForm": true,
+  "tests/test_forms.py::TestDocumentUploadForm": true
+}

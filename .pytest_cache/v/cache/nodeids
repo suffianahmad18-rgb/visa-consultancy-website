@@ -1,0 +1,14 @@
+[
+  "tests/test_forms.py::TestDocumentUploadForm::test_valid_document_upload",
+  "tests/test_forms.py::TestUserRegistrationForm::test_invalid_email",
+  "tests/test_forms.py::TestUserRegistrationForm::test_password_mismatch",
+  "tests/test_forms.py::TestUserRegistrationForm::test_valid_registration_form",
+  "tests/test_models.py::TestApplicationModel::test_application_creation",
+  "tests/test_models.py::TestApplicationModel::test_application_status_progress",
+  "tests/test_models.py::TestDocumentModel::test_document_creation",
+  "tests/test_models.py::TestDocumentModel::test_document_str_representation",
+  "tests/test_views.py::TestApplicationViews::test_application_list_view_requires_login",
+  "tests/test_views.py::TestAuthenticationViews::test_login_view",
+  "tests/test_views.py::TestAuthenticationViews::test_register_view_get",
+  "tests/test_views.py::TestAuthenticationViews::test_register_view_post_success"
+]
