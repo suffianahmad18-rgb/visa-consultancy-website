@@ -15,8 +15,8 @@ DEBUG = False  # Must be False on PythonAnywhere
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '.pythonanywhere.com',  # Your PythonAnywhere domain
-    'uniworldeducation.pythonanywhere.com',  # Your actual PythonAnywhere domain
+    '.pythonanywhere.com',
+    'uniworldeducation.pythonanywhere.com',
 ]
 
 # Application definition
@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     "ckeditor",
     "django_filters",
     "django_extensions",
-    "whitenoise.runserver_nostatic",  # Add for WhiteNoise
+    "whitenoise.runserver_nostatic",
     # Local apps
     "accounts.apps.AccountsConfig",
     "core",
@@ -46,7 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",  # Add WhiteNoise right after security
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -172,13 +172,3 @@ if not DEBUG:
     SECURE_HSTS_SECONDS = 31536000
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
-
-# PythonAnywhere-specific settings
-if 'RENDER' in os.environ:
-    pass  # Not needed for PythonAnywhere
-
-# Ensure all apps are properly configured
-try:
-    from .local_settings import *
-except ImportError:
-    pass
