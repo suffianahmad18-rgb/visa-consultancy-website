@@ -1,1 +1,0 @@
-web: gunicorn visa_consultancy.wsgi:application --bind 0.0.0.0:$PORT
